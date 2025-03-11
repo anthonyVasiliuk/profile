@@ -10,10 +10,10 @@ new class extends Component {
     <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-30 ">
         <div class="text-center md:text-left px-6">
             <h1 class="text-5xl font-bold">
-                {{ __('global.hello') }}, {{ __('global.iam') }} {{ config('app.my_name') }}
+                {{ __('global.hello') }}, {{ __('global.iam') }} {{ __('global.my_name') }}
             </h1>
             <p class="mt-4 text-xl">
-                Fullstack PHP Developer | Laravel | JavaScript | 7+ years experience
+                {{ __('global.position') }}
             </p>
             <a href="#about"
                class="mt-6 inline-block bg-white font-medium text-base text-blue-500 px-6 py-3 rounded-lg shadow-md

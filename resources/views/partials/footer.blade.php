@@ -3,7 +3,7 @@
 
         <!-- 1. Имя / логотип -->
         <div>
-            <h2 class="text-xl font-bold dark:text-white">{{ config('app.my_name') }}</h2>
+            <h2 class="text-xl font-bold dark:text-white">{{ __('global.my_name') }}</h2>
             <p class="mt-2 text-sm">Frontend & Backend Developer</p>
         </div>
 
@@ -26,7 +26,7 @@
 
     <!-- Линия и копирайт -->
     <div class="border-t border-gray-700 mt-6 pt-4 text-center text-sm">
-        © {{ date('Y') }} {{ config('app.my_name') }}.
+        © {{ date('Y') }} {{ __('global.my_name') }}.
     </div>
 </footer>
 </body>

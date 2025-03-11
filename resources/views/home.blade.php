@@ -1,4 +1,4 @@
-<x-layouts.main title="{{ config('app.my_name') }}">
+<x-layouts.main title="{{ __('global.my_name') }}">
     <livewire:sections.hero />
     <livewire:sections.about />
     <livewire:sections.skills />

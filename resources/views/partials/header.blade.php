@@ -1,11 +1,18 @@
-<header x-data="{ darkMode: localStorage.getItem('theme') === 'dark', lang: localStorage.getItem('lang') || 'ru' }"
+<header x-data="{ darkMode: localStorage.getItem('theme') === 'dark' }"
         x-init="if (darkMode) document.documentElement.classList.add('dark')"
         class="fixed top-0 left-0 w-full bg-white dark:bg-gray-900 shadow-md z-50 transition ">
+    <script>
+        let currentLang = document.documentElement.getAttribute('lang') || 'ru';
+        function toggleLang() {
+            let newLang = currentLang === 'ru' ? 'en' : 'ru';
 
+            window.location.href = `/lang/${newLang}`;
+        }
+    </script>
     <div class="container mx-auto flex items-center justify-between py-4 px-6 ">
 
         <!-- Логотип -->
-        <a href="#" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-blue-300 dark:hover:text-stone-400">{{ config('app.my_name') }}</a>
+        <a href="#" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-blue-300 dark:hover:text-stone-400">{{ __('global.my_name') }}</a>
 
         <!-- Навигация -->
         <nav class="hidden lg:flex space-x-6">
@@ -23,9 +30,9 @@
         <!-- Иконки: соцсети, язык, тема -->
         <div class="flex items-center space-x-4">
             <!-- Переключение языка -->
-{{--            <button @click="toggleLang()" class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400">--}}
-{{--                🌍 <span x-text="lang.toUpperCase()"></span>--}}
-{{--            </button>--}}
+            <button @click="toggleLang()" class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400">
+                🌍 <span x-text="currentLang.toUpperCase()"></span>
+            </button>
 
             <!-- Переключение темы -->
             <button @click="darkMode = !darkMode; localStorage.setItem('theme', darkMode ? 'dark' : 'light');
@@ -50,13 +57,5 @@
             <livewire:socials.telegram />
         </div>
     </div>
-    <script>
-        function toggleLang() {
-            let currentLang = document.documentElement.getAttribute('lang') || 'ru';
-            let newLang = currentLang === 'ru' ? 'en' : 'ru';
 
-            // Переключаем язык через Laravel-маршрут
-            window.location.href = `/lang/${newLang}`;
-        }
-    </script>
 </header>

@@ -3,8 +3,10 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -17,10 +19,14 @@ class SetLocale
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $locale = $request->cookie('locale', 'ru');
-//        dd($request->cookies);
+        $encryptedLocale = $request->cookie('locale', 'ru');
+//        EncryptCookies::except('locale');
+        if($encryptedLocale !== 'ru') {
+            $localeArr = explode('|', Crypt::decryptString($encryptedLocale));
+            $locale = end($localeArr);
+            App::setLocale($locale);
+        }
         // Устанавливаем язык
-        App::setLocale($locale);
 
         return $next($request);
     }

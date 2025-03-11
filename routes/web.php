@@ -11,7 +11,7 @@ Route::get('/', function () {
 Route::get('/lang/{locale}', function ($locale, \Illuminate\Http\Request $request) {
     if (in_array($locale, ['en', 'ru'])) {
 //        dd($locale);
-        \Illuminate\Support\Facades\Cookie::make('locale', $locale, 60 * 24 * 30); // Сохраняем язык на 30 дней
+        \Illuminate\Support\Facades\Cookie::queue('locale', $locale, 60 * 24 * 30, false); // Сохраняем язык на 30 дней
     }
     return redirect()->back();
 })->name('setLocale');
