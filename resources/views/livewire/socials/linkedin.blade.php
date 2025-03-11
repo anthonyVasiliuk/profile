@@ -1,4 +1,4 @@
-<a href="https://linkedin.com" target="_blank" class="text-gray-600 hover:text-blue-500">
+<a href="https://www.linkedin.com/in/anton-vasilyuk-69baa61a5/" target="_blank" class="text-gray-600 hover:text-blue-500">
     <span class="[&>svg]:h-5 [&>svg]:w-5">
         <svg
             xmlns="http://www.w3.org/2000/svg"

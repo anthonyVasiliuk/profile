@@ -1,4 +1,4 @@
-<a href="https://github.com" target="_blank" class="text-gray-600 hover:text-gray-900">
+<a href="https://github.com/anthonyVasiliuk/" target="_blank" class="text-gray-600 hover:text-gray-900">
     <span class="[&>svg]:h-5 [&>svg]:w-5">
     <svg
         xmlns="http://www.w3.org/2000/svg"
