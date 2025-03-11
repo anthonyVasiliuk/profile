@@ -20,31 +20,31 @@ new class extends Component {
                         Northitgroup <livewire:socials.link-icon/>
                     </h3>
                 </a>
-                <p class="text-gray-600 dark:text-gray-300">Middle+ Developer (2022 - 2025)</p>
-                <p class="text-gray-400 dark:text-gray-300">{{ __('global.experience_companies.nitg') }}</p>
+                <p class="text-gray-600 dark:text-gray-300 text-xl">Middle+ Developer (2022 - 2025)</p>
+                <p class="text-gray-400 dark:text-gray-300 text-lg">{{ __('global.experience_companies.nitg') }}</p>
 
                 <!-- Проекты внутри компании -->
                 <div class="mt-4 space-y-4">
                     <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
                         <h4 class="text-lg font-semibold text-blue-900 dark:text-blue-200"><a href="https://warehouseplus.de" target="_blank" class="hover:underline">Warehouseplus</a></h4>
-                        <p class="text-gray-600 dark:text-gray-300 text-sm">
+                        <p class="text-gray-600 dark:text-gray-300 text-lg">
                             {{ __('global.warehouseplus') }}
                         </p>
                     </div>
                     <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
                         <h4 class="text-lg font-semibold text-blue-900 dark:text-blue-200"><a href="https://northitgroup.com/en/knowledge/101-%7B%22en%22:%22php-laravel-angular-team-north-it-group-gmbh%22,%22de%22:%22php-laravel-angular-team-north-it-group-gmbh%22%7D" target="_blank" class="hover:underline">Yupinion</a></h4>
-                        <p class="text-gray-600 dark:text-gray-300 text-sm">
+                        <p class="text-gray-600 dark:text-gray-300 text-lg">
                             {{ __('global.yupinion') }}
                         </p>
                     </div>
                     <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
                         <h4 class="text-lg font-semibold text-blue-900 dark:text-blue-200"><a href="https://adandra.net" target="_blank" class="hover:underline">Adandra</a></h4>
-                        <p class="text-gray-600 dark:text-gray-300 text-sm">
+                        <p class="text-gray-600 dark:text-gray-300 text-lg">
                             {{ __('global.adandra') }}
                         </p>
                     </div>
                     <div class="flex justify-center">
-                        <span class="text-center text-sm text-gray-500 dark:text-gray-300">{{ __('global.more') }}</span>
+                        <span class="text-center text-md text-gray-500 dark:text-gray-300">{{ __('global.more') }}</span>
                     </div>
                 </div>
             </div>
@@ -54,11 +54,11 @@ new class extends Component {
                 <h3 class="text-2xl font-bold text-gray-900 dark:text-white">
                     Sportdata
                 </h3>
-                <p class="text-gray-600 dark:text-gray-300">Middle Developer (2020 - 2022)</p>
-                <p class="text-gray-400 dark:text-gray-300">{{ __('global.experience_companies.sportdata') }}</p>
+                <p class="text-gray-600 dark:text-gray-300 text-xl">Middle Developer (2020 - 2022)</p>
+                <p class="text-gray-400 dark:text-gray-300 text-lg">{{ __('global.experience_companies.sportdata') }}</p>
                 <div class="mt-4 p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
                     <h4 class="text-lg font-semibold text-gray-900 dark:text-white">Gambling domain</h4>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">
+                    <p class="text-gray-600 dark:text-gray-300 text-lg">
                         {{ __('global.sportdata') }}
                     </p>
                 </div>
@@ -69,11 +69,11 @@ new class extends Component {
                 <h3 class="text-2xl font-bold text-gray-900 dark:text-white">
                     Web IT
                 </h3>
-                <p class="text-gray-600 dark:text-gray-300">Junior+ Developer (2016 - 2020)</p>
-                <p class="text-gray-400 dark:text-gray-300">{{ __('global.experience_companies.webit') }}</p>
+                <p class="text-gray-600 dark:text-gray-300 text-xl">Junior+ Developer (2016 - 2020)</p>
+                <p class="text-gray-400 dark:text-gray-300 text-lg">{{ __('global.experience_companies.webit') }}</p>
                 <div class="mt-4 p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
                     <h4 class="text-lg font-semibold text-gray-900 dark:text-white">Travel domain</h4>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">
+                    <p class="text-gray-600 dark:text-gray-300 text-lg">
                         {{ __('global.webit') }}
                     </p>
                 </div>

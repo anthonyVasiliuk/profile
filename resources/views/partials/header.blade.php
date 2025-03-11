@@ -5,7 +5,7 @@
     <div class="container mx-auto flex items-center justify-between py-4 px-6 ">
 
         <!-- Логотип -->
-        <a href="#" class="text-2xl font-bold text-gray-900 dark:text-white">{{ config('app.my_name') }}</a>
+        <a href="#" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-blue-300 dark:hover:text-stone-400">{{ config('app.my_name') }}</a>
 
         <!-- Навигация -->
         <nav class="hidden lg:flex space-x-6">
@@ -30,7 +30,7 @@
             <!-- Переключение темы -->
             <button @click="darkMode = !darkMode; localStorage.setItem('theme', darkMode ? 'dark' : 'light');
                     document.documentElement.classList.toggle('dark')"
-                    class="text-gray-700 dark:text-gray-300 hover:text-yellow-500 dark:hover:text-yellow-400">
+                    class="text-gray-700 dark:text-gray-300 hover:text-yellow-500 dark:hover:text-yellow-400 cursor-pointer">
                 <i x-show="!darkMode" >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />

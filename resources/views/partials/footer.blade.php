@@ -29,3 +29,5 @@
         © {{ date('Y') }} {{ config('app.my_name') }}.
     </div>
 </footer>
+</body>
+</html>
