@@ -6,10 +6,34 @@ new class extends Component {
     //
 }; ?>
 
-<section class="h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-500 text-white">
-{{--    <div class="text-center">--}}
-{{--        <h1 class="text-5xl font-bold">{{ __('global.hello') }}, {{ __('global.iam') }} {{ config('app.my_name') }}</h1>--}}
-{{--        <p class="mt-4 text-xl">Fullstack\Backend PHP Developer | Laravel | JavaScript | 7+ years experience</p>--}}
-{{--        <a href="#about" class="mt-6 inline-block bg-white text-blue-500 px-6 py-3 rounded-lg">{{ __('global.learn_more') }}</a>--}}
-{{--    </div>--}}
+<section id="about" class="py-16 bg-gray-200 dark:bg-slate-800">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-12">
+            <div class="flex justify-center">
+                <img class="w-full max-w-md sm:w-sm rounded-lg" src="{{ Vite::asset('resources/images/me/coffee.png') }}" alt="About me">
+            </div>
+            <div>
+                <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    {{ __('global.about_me') }}
+                </h2>
+                <p class="text-gray-700 dark:text-gray-300 text-lg">
+                    {{ __('global.about_description') }}
+                </p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class="md:order-1 order-2">
+                <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                    {{ __('global.education') }}
+                </h3>
+                <p class="text-gray-700 dark:text-gray-300 text-lg">
+                    {{ __('global.education_description') }}
+                </p>
+            </div>
+            <div class="flex justify-center md:order-2 order-1">
+                <img class="w-full max-w-md rounded-lg " src="{{ Vite::asset('resources/images/etc/bachelor1.png') }}" alt="Education">
+            </div>
+        </div>
+    </div>
 </section>
