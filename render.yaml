@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: laravel-volt
+    env: docker
+    plan: free
+    branch: main
+    autoDeploy: true
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: APP_KEY
+        generateValue: true
+      - key: PORT
+        value: 8000
