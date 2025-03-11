@@ -14,5 +14,7 @@ export default defineConfig({
     ],
     server: {
         cors: true,
+        strictPort: true,
+        https: true,
     },
 });

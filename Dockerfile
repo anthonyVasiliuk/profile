@@ -30,6 +30,7 @@ RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Устанавливаем переменные окружения
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
+ENV ASSET_URL=https://profile-jhmf.onrender.com
 RUN sed -ri -e 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/*.conf
 
 # Открываем порт 8000
