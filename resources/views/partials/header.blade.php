@@ -1,5 +1,5 @@
 <header x-data="{ darkMode: localStorage.getItem('theme') === 'dark' }"
-        x-init="console.log(darkMode); if (!!darkMode) document.documentElement.classList.add('dark')"
+        x-init="if (darkMode) document.documentElement.classList.add('dark')"
         class="fixed top-0 left-0 w-full bg-white dark:bg-gray-900 shadow-md z-50 transition ">
     <script>
         let currentLang = document.documentElement.getAttribute('lang') || 'ru';
