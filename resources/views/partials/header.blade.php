@@ -30,9 +30,9 @@
         <!-- Иконки: соцсети, язык, тема -->
         <div class="flex items-center space-x-4">
             <!-- Переключение языка -->
-            <button @click="toggleLang()" class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400">
-                🌍 <span x-text="currentLang.toUpperCase()"></span>
-            </button>
+{{--            <button @click="toggleLang()" class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 cursor-pointer">--}}
+{{--                🌍 <span x-text="currentLang.toUpperCase()"></span>--}}
+{{--            </button>--}}
 
             <!-- Переключение темы -->
             <button @click="darkMode = !darkMode; localStorage.setItem('theme', darkMode ? 'dark' : 'light');

@@ -19,14 +19,12 @@ class SetLocale
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $encryptedLocale = $request->cookie('locale', 'ru');
-//        EncryptCookies::except('locale');
-        if($encryptedLocale !== 'ru') {
+        $encryptedLocale = $request->cookie('locale', 'en');
+        if($encryptedLocale !== 'en') {
             $localeArr = explode('|', Crypt::decryptString($encryptedLocale));
             $locale = end($localeArr);
             App::setLocale($locale);
         }
-        // Устанавливаем язык
 
         return $next($request);
     }
