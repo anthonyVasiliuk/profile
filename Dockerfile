@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
+    cron \
     && docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd
 
 # Устанавливаем Composer
@@ -33,8 +34,14 @@ ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 ENV ASSET_URL=https://profile-jhmf.onrender.com
 RUN sed -ri -e 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/*.conf
 
+# Создаём cron-задание
+RUN echo "*/10 * * * * curl -s https://profile-jhmf.onrender.com > /dev/null 2>&1" > /etc/cron.d/keep-alive
+
+# Даём нужные права и включаем cron
+RUN chmod 0644 /etc/cron.d/keep-alive && crontab /etc/cron.d/keep-alive
+
 # Открываем порт 8000
 EXPOSE 8000
 
 # Запускаем сервер
-CMD ["apache2-foreground"]
+CMD bash -c "service cron start && apache2-foreground"
