@@ -4,7 +4,7 @@
         <!-- 1. Имя / логотип -->
         <div>
             <h2 class="text-xl font-bold dark:text-white">{{ __('global.my_name') }}</h2>
-            <p class="mt-2 text-sm">Frontend & Backend Developer</p>
+            <p class="mt-2 text-sm">{{ __('global.position') }}</p>
         </div>
 
         <!-- 2. Навигация -->

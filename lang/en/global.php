@@ -2,7 +2,8 @@
 
 return [
     'my_name' => 'Tony Vasiliuk',
-    'position' => 'Fullstack PHP Developer | Laravel | JavaScript | 7+ years experience',
+    'position' => 'Fullstack PHP Developer',
+    'position_experience' => ' | Laravel | JavaScript | 7+ years experience',
     'hello' => 'Hello',
     'iam' => 'I\'m',
     'learn_more' => 'Learn more',

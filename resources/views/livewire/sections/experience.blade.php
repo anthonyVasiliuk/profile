@@ -20,7 +20,7 @@ new class extends Component {
                         Northitgroup <livewire:socials.link-icon/>
                     </h3>
                 </a>
-                <p class="text-gray-600 dark:text-gray-300 text-xl">Middle+ Developer (2022 - 2025)</p>
+                <p class="text-gray-600 dark:text-gray-300 text-xl">Middle+ Backend Developer (2022 - 2025)</p>
                 <p class="text-gray-400 dark:text-gray-300 text-lg">{{ __('global.experience_companies.nitg') }}</p>
 
                 <!-- Проекты внутри компании -->
@@ -54,7 +54,7 @@ new class extends Component {
                 <h3 class="text-2xl font-bold text-gray-900 dark:text-white">
                     Sportdata
                 </h3>
-                <p class="text-gray-600 dark:text-gray-300 text-xl">Middle Developer (2020 - 2022)</p>
+                <p class="text-gray-600 dark:text-gray-300 text-xl">Middle Fullstack Developer (2020 - 2022)</p>
                 <p class="text-gray-400 dark:text-gray-300 text-lg">{{ __('global.experience_companies.sportdata') }}</p>
                 <div class="mt-4 p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
                     <h4 class="text-lg font-semibold text-gray-900 dark:text-white">Gambling domain</h4>
@@ -69,7 +69,7 @@ new class extends Component {
                 <h3 class="text-2xl font-bold text-gray-900 dark:text-white">
                     Web IT
                 </h3>
-                <p class="text-gray-600 dark:text-gray-300 text-xl">Junior+ Developer (2016 - 2020)</p>
+                <p class="text-gray-600 dark:text-gray-300 text-xl">Junior+ Fullstack Developer (2016 - 2020)</p>
                 <p class="text-gray-400 dark:text-gray-300 text-lg">{{ __('global.experience_companies.webit') }}</p>
                 <div class="mt-4 p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
                     <h4 class="text-lg font-semibold text-gray-900 dark:text-white">Travel domain</h4>
