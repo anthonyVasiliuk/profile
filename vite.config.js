@@ -15,5 +15,6 @@ export default defineConfig({
     server: {
         cors: true,
         strictPort: true,
+        https: process.env.NODE_ENV === 'production',
     },
 });
