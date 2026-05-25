@@ -1,47 +1,106 @@
-# Используем официальный образ PHP + Apache
-FROM php:8.2-apache
+FROM php:8.4-cli-alpine AS composer_deps
 
-# Устанавливаем зависимости (PHP и Node.js)
-RUN apt-get update && apt-get install -y \
-    unzip \
-    git \
-    curl \
+WORKDIR /app
+
+RUN apk add --no-cache \
+    icu-dev \
     libpng-dev \
-    libonig-dev \
+    libzip-dev \
+    oniguruma-dev \
+    sqlite-dev \
     libxml2-dev \
-    cron \
-    && docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd
+    && docker-php-ext-configure gd \
+    && docker-php-ext-install \
+        bcmath \
+        gd \
+        intl \
+        mbstring \
+        pdo_mysql \
+        pdo_sqlite \
+        xml \
+        zip
 
-# Устанавливаем Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 
-# Устанавливаем Node.js и npm
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
-    && apt-get install -y nodejs
+COPY composer.json composer.lock ./
 
-# Устанавливаем зависимости Laravel
+RUN composer install \
+    --no-dev \
+    --no-interaction \
+    --prefer-dist \
+    --optimize-autoloader \
+    --no-scripts
+
+
+FROM node:22-alpine AS frontend_build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN npm ci
+
+COPY resources ./resources
+COPY public ./public
+COPY vite.config.js ./
+
+RUN npm run build
+
+
+FROM php:8.4-fpm-alpine AS app
+
 WORKDIR /var/www/html
+
+RUN apk add --no-cache \
+    nginx \
+    supervisor \
+    bash \
+    curl \
+    gettext \
+    icu-dev \
+    libpng-dev \
+    libzip-dev \
+    oniguruma-dev \
+    sqlite-dev \
+    && docker-php-ext-configure gd \
+    && docker-php-ext-install \
+        bcmath \
+        exif \
+        gd \
+        intl \
+        opcache \
+        pcntl \
+        pdo_mysql \
+        pdo_sqlite \
+        zip
+
 COPY . .
-RUN composer install --no-dev --optimize-autoloader
-RUN npm install && npm run build
+COPY --from=composer_deps /app/vendor ./vendor
+COPY --from=frontend_build /app/public/build ./public/build
 
-# Настраиваем права доступа
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+RUN rm -f bootstrap/cache/*.php \
+    && php artisan package:discover --ansi \
+    && php artisan vendor:publish --force --tag=livewire:assets --ansi \
+    && mkdir -p \
+        storage/framework/cache/data \
+        storage/framework/sessions \
+        storage/framework/views \
+        storage/logs \
+        storage/app/database \
+        bootstrap/cache \
+        /run/nginx \
+    && chown -R www-data:www-data /var/www/html \
+    && chmod -R 775 storage bootstrap/cache
 
-# Устанавливаем переменные окружения
-ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
-ENV ASSET_URL=https://profile-jhmf.onrender.com
-RUN sed -ri -e 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/*.conf
+COPY docker/nginx/default.conf.template /etc/nginx/templates/default.conf.template
+COPY docker/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY docker/php/php.ini /usr/local/etc/php/conf.d/zz-app.ini
+COPY docker/entrypoint.sh /usr/local/bin/app-entrypoint
 
-# Создаём cron-задание
-RUN echo "*/10 * * * * curl -s https://profile-jhmf.onrender.com > /dev/null 2>&1" > /etc/cron.d/keep-alive
+RUN chmod +x /usr/local/bin/app-entrypoint
 
-# Даём нужные права и включаем cron
-RUN chmod 0644 /etc/cron.d/keep-alive && crontab /etc/cron.d/keep-alive
+ENV PORT=8080
 
-# Открываем порт 8000
-EXPOSE 8000
+EXPOSE 8080
 
-# Запускаем сервер
-CMD bash -c "service cron start && apache2-foreground"
+ENTRYPOINT ["app-entrypoint"]
+CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]

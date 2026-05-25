@@ -1,4 +1,4 @@
-<a href="https://t.me/AntonVasiliuk" target="_blank" class="text-gray-600 hover:text-blue-400">
+<a href="https://t.me/AntonVasiliuk" target="_blank" rel="noopener noreferrer" class="theme-social-link">
 
 <span class="[&>svg]:h-5 [&>svg]:w-5">
     <svg

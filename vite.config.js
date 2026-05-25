@@ -13,8 +13,16 @@ export default defineConfig({
         tailwindcss(),
     ],
     server: {
+        host: '0.0.0.0',
+        port: 5173,
         cors: true,
+        hmr: {
+            host: 'localhost',
+        },
         strictPort: true,
         https: process.env.NODE_ENV === 'production',
+        watch: {
+            usePolling: process.env.CHOKIDAR_USEPOLLING === 'true',
+        },
     },
 });

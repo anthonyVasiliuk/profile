@@ -3,10 +3,12 @@
 <head>
     @include('partials.head')
 </head>
-<body class="bg-gray-100 text-gray-900">
+<body class="min-h-screen bg-[var(--page-bg)] text-[var(--text)] antialiased selection:bg-[var(--accent-soft)] selection:text-[var(--heading)]" id="top">
 @include('partials.header')
-<main>
+<main class="relative overflow-x-hidden">
     {{ $slot }}
 </main>
 @include('partials.footer')
+@livewireScripts
 </body>
+</html>

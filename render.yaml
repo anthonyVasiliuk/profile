@@ -1,16 +1,23 @@
 services:
   - type: web
-    name: laravel-volt
+    name: anton-vasiliuk-profile
     env: docker
     plan: free
     branch: main
     autoDeploy: true
+    healthCheckPath: /up
     envVars:
       - key: APP_ENV
         value: production
       - key: APP_DEBUG
         value: false
-      - key: APP_KEY
-        generateValue: true
       - key: PORT
-        value: 8000
+        value: 8080
+      - key: AUTO_GENERATE_APP_KEY
+        value: true
+      - key: SESSION_DRIVER
+        value: file
+      - key: CACHE_STORE
+        value: file
+      - key: QUEUE_CONNECTION
+        value: sync

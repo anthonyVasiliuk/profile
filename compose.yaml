@@ -1,0 +1,47 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: antonvasiliuk/profile:latest
+    env_file:
+      - .env.docker
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/var/www/html
+      - app_storage:/var/www/html/storage
+      - app_cache:/var/www/html/bootstrap/cache
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:8080/up || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  vite:
+    image: node:22-alpine
+    working_dir: /var/www/html
+    command: >
+      sh -lc "LOCKFILE_HASH_FILE=node_modules/.package-lock.sha1;
+      CURRENT_HASH=$$(sha1sum package-lock.json | awk '{print $$1}');
+      SAVED_HASH=$$(cat $$LOCKFILE_HASH_FILE 2>/dev/null || true);
+      if [ ! -d node_modules/vite ] || [ \"$$CURRENT_HASH\" != \"$$SAVED_HASH\" ]; then
+      npm ci &&
+      printf '%s' \"$$CURRENT_HASH\" > $$LOCKFILE_HASH_FILE;
+      fi &&
+      npm run dev -- --host 0.0.0.0 --port 5173"
+    ports:
+      - "5173:5173"
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+    volumes:
+      - .:/var/www/html
+      - app_node_modules:/var/www/html/node_modules
+    restart: unless-stopped
+
+volumes:
+  app_node_modules:
+  app_storage:
+  app_cache:
