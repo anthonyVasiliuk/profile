@@ -8,7 +8,6 @@ services:
       - .env.docker.prod
     volumes:
       - app_storage:/var/www/html/storage
-      - app_cache:/var/www/html/bootstrap/cache
     mem_limit: 384m
     mem_reservation: 256m
     cpus: 0.75
@@ -27,7 +26,6 @@ services:
 
 volumes:
   app_storage:
-  app_cache:
 
 networks:
   edge_net:

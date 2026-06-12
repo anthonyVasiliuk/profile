@@ -15,6 +15,12 @@ mkdir -p \
     "$APP_DIR/bootstrap/cache" \
     /run/nginx
 
+rm -f \
+    "$APP_DIR/bootstrap/cache/packages.php" \
+    "$APP_DIR/bootstrap/cache/services.php"
+
+php artisan package:discover --ansi --no-interaction
+
 if [ -z "${APP_KEY:-}" ] && [ -f "$APP_KEY_FILE" ]; then
     export APP_KEY="$(cat "$APP_KEY_FILE")"
 fi
