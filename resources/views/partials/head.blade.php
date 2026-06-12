@@ -1,12 +1,12 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="{{ $description ?? __('global.seo_description') }}" />
+<meta name="description" content="{{ $description ?? __('global.seo_description', ['years' => $profileExperienceYears]) }}" />
 <meta name="theme-color" content="#050816" />
 
 <title>{{ $title ?? __('global.my_name') }}</title>
 
 <meta property="og:title" content="{{ $title ?? __('global.my_name') }}" />
-<meta property="og:description" content="{{ $description ?? __('global.seo_description') }}" />
+<meta property="og:description" content="{{ $description ?? __('global.seo_description', ['years' => $profileExperienceYears]) }}" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="{{ url()->current() }}" />
 <meta name="twitter:card" content="summary_large_image" />

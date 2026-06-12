@@ -24,20 +24,13 @@ new class extends Component {
             'date' => '02 / 2025',
             'text' => __('global.testimonial_2'),
         ],
-        [
-            'image' => 'thomas.jpg',
-            'name' => __('global.person_3_name'),
-            'position' => __('global.person_3_position'),
-            'date' => null,
-            'text' => __('global.testimonial_3'),
-        ],
     ];
 
     $recommendationUi = [
         'reference_type' => $isRu ? 'Тип рекомендаций' : 'Reference Type',
         'reference_type_text' => $isRu ? 'Люди, с которыми я работал напрямую на длинных коммерческих проектах.' : 'Direct people who worked with me on long-running commercial delivery.',
         'signal' => $isRu ? 'Что подчёркивают' : 'Signal',
-        'signal_text' => $isRu ? 'Надёжность, техническую ответственность, backend-глубину и прагматичное исполнение.' : 'Reliability, technical ownership, backend depth, and pragmatic execution.',
+        'signal_text' => $isRu ? 'Надёжность, техническую ответственность, backend-глубину и спокойную работу на длинной дистанции.' : 'Reliability, technical responsibility, backend depth, and steady long-term delivery.',
         'expand' => $isRu ? 'Читать полностью' : 'Read full reference',
         'collapse' => $isRu ? 'Свернуть' : 'Collapse',
         'quote_label' => $isRu ? 'Рекомендация' : 'Reference',

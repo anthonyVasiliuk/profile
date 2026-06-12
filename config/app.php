@@ -123,4 +123,6 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'profile_career_start_year' => (int) env('PROFILE_CAREER_START_YEAR', 2016),
+
 ];

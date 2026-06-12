@@ -7,22 +7,22 @@ new class extends Component {
 }; ?>
 
 @php
-    $stack = ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'Docker', 'Git'];
+    $stack = ['Laravel', 'PHP', 'Filament', 'TypeScript', 'PostgreSQL', 'Docker'];
     $isRu = app()->getLocale() === 'ru';
     $heroUi = [
         'overview' => $isRu ? 'Системный обзор' : 'System Overview',
         'mode' => $isRu ? 'backend режим' : 'backend mode',
         'projects' => $isRu ? 'Проекты' : 'Projects',
         'terminal' => $isRu ? 'Терминал' : 'Terminal',
-        'developer_1' => $isRu ? '// Backend-разработчик' : '// Backend Developer',
-        'developer_2' => '// PHP . Laravel . SQL . JavaScript',
-        'developer_3' => $isRu ? '// Создаю масштабируемые системы' : '// Building scalable systems',
-        'developer_4' => $isRu ? '// и чистые API' : '// and clean APIs',
-        'boot_1' => '> init portfolio.exe',
-        'boot_2' => $isRu ? 'booting api-service ... готово' : 'booting api-service ... done',
-        'boot_3' => $isRu ? 'booting db-service ... готово' : 'booting db-service ... done',
-        'boot_4' => $isRu ? 'booting worker ... готово' : 'booting worker ... done',
-        'boot_5' => $isRu ? 'все системы онлайн' : 'all systems online',
+        'developer_1' => $isRu ? '// Backend-фокус, fullstack-подача' : '// Backend focus, fullstack delivery',
+        'developer_2' => '// PHP . Laravel . SQL . React . TypeScript',
+        'developer_3' => $isRu ? '// Переписываю legacy без остановки продакшена' : '// Rewriting legacy without stopping production',
+        'developer_4' => $isRu ? '// и собираю интеграции под единый слой' : '// and unifying integrations behind one layer',
+        'boot_1' => '> open profile --focus=backend',
+        'boot_2' => $isRu ? 'booting proxyma-engine ... готово' : 'booting proxyma-engine ... done',
+        'boot_3' => $isRu ? 'loading astryhub-content ... готово' : 'loading astryhub-content ... done',
+        'boot_4' => $isRu ? 'starting trade-it-worker ... готово' : 'starting trade-it-worker ... done',
+        'boot_5' => $isRu ? 'рабочий контекст загружен' : 'workspace context loaded',
     ];
 @endphp
 
@@ -38,7 +38,7 @@ new class extends Component {
     <div class="absolute left-[-7rem] top-28 -z-10 h-64 w-64 rounded-full blur-3xl" style="background-color: rgba(9, 230, 255, 0.09);"></div>
     <div class="absolute right-[-5rem] top-16 -z-10 h-72 w-72 rounded-full blur-3xl" style="background-color: rgba(255, 56, 209, 0.08);"></div>
 
-    <div class="mx-auto grid min-h-[calc(100vh-6rem)] max-w-7xl gap-14 px-6 pb-20 pt-32 lg:grid-cols-[1.02fr_0.98fr] lg:items-stretch lg:gap-16 lg:pb-24 lg:pt-36">
+    <div class="mx-auto grid min-h-[calc(100vh-6rem)] max-w-7xl gap-14 px-6 pb-20 pt-44 lg:grid-cols-[1.02fr_0.98fr] lg:items-stretch lg:gap-16 lg:pb-24 lg:pt-48">
         <div class="flex max-w-3xl flex-col justify-center lg:h-full">
             <div class="theme-pill inline-flex items-center rounded-[0.85rem] px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] backdrop-blur sm:text-sm">
                 {{ __('global.hero_badge') }}
@@ -94,7 +94,7 @@ new class extends Component {
                     <p>{{ $heroUi['boot_1'] }}</p>
                     <p>&gt; {{ __('global.hero_stats_backend_label') }}</p>
                     <p>&gt; {{ __('global.hero_stats_delivery_label') }}</p>
-                    <p>&gt; {{ __('global.position_experience') }}</p>
+                    <p>&gt; {{ __('global.position_experience', ['years' => $profileExperienceYears]) }}</p>
                     <p class="text-[var(--accent-secondary)]">&gt; ready_</p>
                 </div>
             </div>
@@ -134,12 +134,40 @@ new class extends Component {
                         <div class="cyber-terminal flex h-full flex-col rounded-[1.2rem] p-4">
                             <p class="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--accent)]">{{ $heroUi['projects'] }}</p>
                             <div class="cyber-log space-y-2 text-xs">
-                                <p>/api-gateway</p>
-                                <p>/auth-service</p>
-                                <p>/user-service</p>
-                                <p>/payment-service</p>
-                                <p>/notification-service</p>
-                                <p>/search-service</p>
+                                <p>
+                                    <a href="https://proxyma.io" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between gap-3 transition-colors hover:text-[var(--accent-secondary)]">
+                                        <span>/proxyma-engine</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="shrink-0 opacity-70 transition group-hover:opacity-100" width="10" height="10" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 16L16 8M10 8h6v6" />
+                                        </svg>
+                                    </a>
+                                </p>
+                                <p>
+                                    <a href="https://astryhub.com" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between gap-3 transition-colors hover:text-[var(--accent-secondary)]">
+                                        <span>/astryhub</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="shrink-0 opacity-70 transition group-hover:opacity-100" width="10" height="10" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 16L16 8M10 8h6v6" />
+                                        </svg>
+                                    </a>
+                                </p>
+                                <p>
+                                    <a href="https://instiles.online" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between gap-3 transition-colors hover:text-[var(--accent-secondary)]">
+                                        <span>/instiles-web</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="shrink-0 opacity-70 transition group-hover:opacity-100" width="10" height="10" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 16L16 8M10 8h6v6" />
+                                        </svg>
+                                    </a>
+                                </p>
+                                <p>/trade-it</p>
+                                <p>/warehouseplus-api</p>
+                                <p>
+                                    <a href="https://adandra.net" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between gap-3 transition-colors hover:text-[var(--accent-secondary)]">
+                                        <span>/adandra</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="shrink-0 opacity-70 transition group-hover:opacity-100" width="10" height="10" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 16L16 8M10 8h6v6" />
+                                        </svg>
+                                    </a>
+                                </p>
                             </div>
                         </div>
 
@@ -159,7 +187,7 @@ new class extends Component {
 
                 <div class="relative mt-4 grid gap-3 sm:grid-cols-3">
                     <div class="cyber-hero-stat theme-card-interactive rounded-[1rem] border p-4">
-                        <p class="text-sm font-semibold text-[var(--accent-strong)]">{{ __('global.hero_stats_years') }}</p>
+                        <p class="text-sm font-semibold text-[var(--accent-strong)]">{{ __('global.hero_stats_years', ['years' => $profileExperienceYears]) }}</p>
                         <p class="theme-copy mt-2 text-sm leading-6">{{ __('global.hero_stats_years_label') }}</p>
                     </div>
                     <div class="cyber-hero-stat theme-card-interactive rounded-[1rem] border p-4">

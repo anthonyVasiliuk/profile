@@ -11,29 +11,29 @@ new class extends Component {
 
     $projectsUi = [
         'kicker' => $isRu ? 'Собственные проекты' : 'Own projects',
-        'heading' => $isRu ? 'Независимые продукты и product-side builds' : 'Independent products and side builds',
+        'heading' => $isRu ? 'Независимые продукты, где я отвечаю не только за backend' : 'Independent products where I own more than the backend',
         'intro' => $isRu
-            ? 'Отдельные проекты, где я выступаю не только как backend-разработчик, но и как человек, который собирает структуру продукта, логику экранов и общую подачу.'
-            : 'Independent projects where I am not only the backend developer, but also the person shaping the product structure, screen flow, and presentation.',
+            ? 'Здесь я отвечаю не только за backend, но и за структуру продукта, платёжный сценарий, контент и путь пользователя от первого экрана до целевого действия.'
+            : 'These are projects where I handle not only the backend, but also the product structure, payment flow, content model, and the path from first screen to user action.',
         'summary_a' => $isRu ? '2 активных продукта' : '2 active products',
-        'summary_b' => $isRu ? 'Backend + product thinking' : 'Backend + product thinking',
-        'summary_c' => $isRu ? 'Личный ownership' : 'Personal ownership',
+        'summary_b' => $isRu ? 'Оплата, AI-чат, двуязычный контент' : 'Payments, AI chat, bilingual content',
+        'summary_c' => $isRu ? 'Backend, UI flow, запуск' : 'Backend, UI flow, launch work',
         'astry_label' => $isRu ? 'AI-assisted astrology product' : 'AI-assisted astrology product',
         'astry_text' => $isRu
-            ? 'AstryHub — мой отдельный продукт, где я пробую более понятный формат астрологии: короткие разборы, чёткая структура, разделение натальных и транзитных слоёв и AI-чат поверх этого.'
-            : 'AstryHub is a personal product where I am trying a simpler format for astrology: short readings, clear structure, separate natal and transit layers, and an AI chat on top.',
+            ? 'AstryHub — продукт с оплатой, AI-чатом, личным кабинетом и двуязычным контентом. Я собрал backend, экранную структуру и логику выдачи так, чтобы сложная тема читалась как нормальный цифровой сервис.'
+            : 'AstryHub is a product with payments, an AI chat, account flows, and bilingual content. I built the backend, screen structure, and delivery logic so a complex topic feels like a usable digital product.',
         'astry_signal' => $isRu ? 'Что здесь ценно' : 'Why it matters',
         'astry_signal_text' => $isRu
-            ? 'Для меня это пример не просто лендинга, а живого продукта: с логикой, оплатой, контентом и нормальной двуязычной структурой.'
-            : 'For me, this is an example of a real product, not just a landing page: it has its own logic, pricing model, content structure, and bilingual setup.',
+            ? 'Здесь видны оплата, контентная модель, AI-слой и двуязычная структура. Это рабочий сервис, а не декоративный лендинг.'
+            : 'This one shows payments, a real content model, an AI layer, and bilingual structure. It behaves like a product, not a decorative landing page.',
         'instiles_label' => $isRu ? 'Independent storefront project' : 'Independent storefront project',
         'instiles_text' => $isRu
-            ? 'Instiles.online — отдельный витринный проект, где я больше работаю с подачей: как показать ассортимент, как собрать экран, как довести пользователя от первого блока до действия.'
-            : 'Instiles.online is a separate storefront-style project where I spend more time on presentation: how to show the catalog, how to structure the screen, and how to move the user from the first block to action.',
+            ? 'Instiles.online — витринный ecommerce-проект, где я собираю каталог, экранную логику и путь пользователя от первого блока до заявки.'
+            : 'Instiles.online is a storefront-style ecommerce project where I shape the catalog, screen logic, and the user path from first block to inquiry.',
         'instiles_signal' => $isRu ? 'Что здесь ценно' : 'Why it matters',
         'instiles_signal_text' => $isRu
-            ? 'Показывает, что мне интересен не только backend, но и то, как продукт выглядит, читается и ведёт пользователя дальше.'
-            : 'It shows that I care not only about backend logic, but also about how a product looks, reads, and moves the user forward.',
+            ? 'Показывает, что я думаю не только про backend, но и про то, как продукт объясняет ассортимент и доводит пользователя до действия.'
+            : 'It shows that I care not only about backend logic, but also about how a product explains the catalog and leads the user to action.',
         'visit' => $isRu ? 'Открыть проект' : 'Open project',
         'stack' => $isRu ? 'Фокус' : 'Focus',
     ];

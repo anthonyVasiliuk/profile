@@ -2,54 +2,72 @@
     /** @var string $locale */
     $isRu = ($locale ?? app()->getLocale()) === 'ru';
 
-    $contacts = [
+    $appUrl = rtrim((string) config('app.url'), '/');
+    $webHost = str_replace(['https://', 'http://'], '', $appUrl);
+    $showWeb = $webHost !== '' && ! str_contains($webHost, 'localhost') && ! str_contains($webHost, '127.0.0.1');
+
+    $contacts = array_values(array_filter([
+        ['label' => 'Email', 'value' => 'anthony.vbrest@gmail.com', 'url' => 'mailto:anthony.vbrest@gmail.com'],
+        ['label' => $isRu ? 'Локация' : 'Location', 'value' => $isRu ? 'Беларусь, Брест' : 'Belarus, Brest', 'url' => null],
         ['label' => 'Telegram', 'value' => '@AntonVasiliuk', 'url' => 'https://t.me/AntonVasiliuk'],
         ['label' => 'LinkedIn', 'value' => 'anton-vasilyuk', 'url' => 'https://www.linkedin.com/in/anton-vasilyuk-69baa61a5/'],
         ['label' => 'GitHub', 'value' => 'anthonyVasiliuk', 'url' => 'https://github.com/anthonyVasiliuk/'],
-        ['label' => 'Web', 'value' => str_replace(['https://', 'http://'], '', rtrim(config('app.url'), '/')), 'url' => config('app.url')],
-    ];
+        $showWeb ? ['label' => $isRu ? 'Сайт' : 'Website', 'value' => $webHost, 'url' => $appUrl] : null,
+    ]));
 
-    $coreStack = ['PHP', 'Laravel', 'JavaScript', 'jQuery', 'MySQL', 'PostgreSQL', 'CSS', 'RESTful APIs', 'HTML', 'React', 'Git', 'Docker'];
-    $adjacentStack = ['Symfony', 'Elasticsearch', 'GraphQL', 'Livewire', 'Apache Kafka', 'Tailwind CSS', 'Redis', 'Bootstrap', 'WordPress', 'Backbone.js', 'Go', 'Python'];
+    $coreStack = ['PHP', 'Laravel', 'Filament', 'TypeScript', 'JavaScript', 'React', 'MySQL', 'PostgreSQL', 'RESTful APIs', 'Redis', 'Git', 'Docker'];
+    $adjacentStack = ['Go', 'Python', 'Livewire', 'Tailwind CSS', 'GraphQL', 'Apache Kafka', 'Elasticsearch', 'Symfony', 'HTML', 'CSS', 'jQuery', 'Bootstrap', 'Backbone.js', 'WordPress'];
+
+    $splitRole = function (string $role): array {
+        if (preg_match('/^(.*?)\s*\(([^)]*)\)\s*$/u', $role, $m)) {
+            return ['title' => trim($m[1]), 'period' => trim($m[2])];
+        }
+
+        return ['title' => trim($role), 'period' => ''];
+    };
 
     $experience = [
         [
             'company' => 'Proxyma / Prosox',
-            'role' => $isRu ? 'Senior Backend-разработчик (2025 - настоящее время)' : 'Senior Backend Developer (2025 - Present)',
+            'role' => $isRu ? 'Senior Backend-разработчик' : 'Senior Backend Developer',
+            'period' => $isRu ? '2025 - наст. время' : '2025 - Present',
             'summary' => $isRu
-                ? 'Продуктовая backend-роль с фокусом на поддержку legacy-платформы продажи прокси и постепенный перевод ключевой логики на новый движок без остановки рабочего продукта.'
-                : 'Product backend role focused on keeping a legacy proxy-sales platform stable while migrating its core logic to a new engine without disrupting the live product.',
+                ? 'Продуктовая backend-роль: поддержка legacy-платформы продажи прокси и постепенный перевод ключевой логики на новый движок без остановки рабочего продукта.'
+                : 'Product backend role: keeping a legacy proxy-sales platform stable while migrating its core logic to a new engine without disrupting the live product.',
             'points' => [
                 $isRu
-                    ? 'Переписал основной backend-движок за 3 месяца, параллельно поддерживая legacy-ветку: ускорил выпуск изменений примерно на 40% и снял ключевые архитектурные ограничения.'
-                    : 'Rebuilt the core backend engine in 3 months while supporting the live legacy branch, improving delivery speed by roughly 40% and removing several hard architectural limits.',
+                    ? 'Переписал основной backend-движок примерно за три месяца, параллельно поддерживая legacy-ветку, и снял архитектурные ограничения, которые мешали развитию продукта.'
+                    : 'Rebuilt the core backend engine in about three months while supporting the live legacy branch, removing the architectural limits that had been blocking product growth.',
                 $isRu
-                    ? 'Подключил 8+ провайдеров прокси и 3 платёжные системы, унифицировал адаптеры, ретраи и синхронизацию остатков — время интеграции нового провайдера снизилось примерно на 60%.'
-                    : 'Integrated 8+ proxy providers and 3 payment systems, standardizing adapters, retries, and stock sync, reducing new-provider rollout time by about 60%.',
+                    ? 'Подключил 8+ провайдеров прокси и 3 платёжные системы под единым адаптерным слоем с общими ретраями, синхронизацией остатков и provisioning.'
+                    : 'Integrated 8+ proxy providers and 3 payment systems behind one adapter layer with shared retries, stock sync, and provisioning.',
                 $isRu
-                    ? 'Оптимизировал тяжёлые API-эндпоинты, запросы к БД и кеширование — среднее время ответа упало примерно на 35%, ошибки под пиковой нагрузкой — примерно на 30%.'
-                    : 'Optimized heavy API endpoints, database queries, and caching, cutting average response time by about 35% and peak-load errors by roughly 30%.',
+                    ? 'Профилировал тяжёлые API-эндпоинты, запросы к БД и фоновые процессы; после оптимизации сервис стал стабильнее под пиковыми нагрузками.'
+                    : 'Profiled heavy API endpoints, database queries, and background jobs; after optimization the service became more stable under peak load.',
             ],
         ],
         [
             'company' => __('global.company_northitgroup'),
-            'role' => __('global.role_northitgroup'),
+            'role' => $splitRole(__('global.role_northitgroup'))['title'],
+            'period' => $splitRole(__('global.role_northitgroup'))['period'],
             'summary' => __('global.experience_companies.nitg'),
             'points' => [
-                'Warehouseplus — '.__('global.warehouseplus'),
-                'Yupinion — '.__('global.yupinion'),
-                'Adandra — '.__('global.adandra'),
+                'Warehouseplus - '.__('global.warehouseplus'),
+                'Yupinion - '.__('global.yupinion'),
+                'Adandra - '.__('global.adandra'),
             ],
         ],
         [
             'company' => __('global.company_sportdata'),
-            'role' => __('global.role_sportdata'),
+            'role' => $splitRole(__('global.role_sportdata'))['title'],
+            'period' => $splitRole(__('global.role_sportdata'))['period'],
             'summary' => __('global.experience_companies.sportdata'),
             'points' => [__('global.sportdata')],
         ],
         [
             'company' => __('global.company_webit'),
-            'role' => __('global.role_webit'),
+            'role' => $splitRole(__('global.role_webit'))['title'],
+            'period' => $splitRole(__('global.role_webit'))['period'],
             'summary' => __('global.experience_companies.webit'),
             'points' => [__('global.webit')],
         ],
@@ -70,141 +88,141 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'DejaVu Sans', sans-serif;
-            font-size: 10px;
-            line-height: 1.5;
-            color: #1f2937;
+            font-size: 9.5px;
+            line-height: 1.55;
+            color: #273142;
         }
-        .page { padding: 0 34px 34px; }
+        a { color: inherit; text-decoration: none; }
+        .page { padding: 16px 40px 36px; }
 
         .masthead {
             background-color: #0b1220;
-            color: #e5e7eb;
-            padding: 26px 34px 22px;
-            margin-bottom: 18px;
+            color: #cbd5e1;
+            padding: 24px 40px 18px;
             border-bottom: 3px solid #06b6d4;
         }
         .masthead .name {
-            font-size: 24px;
+            font-size: 23px;
             font-weight: bold;
             color: #ffffff;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.4px;
         }
-        .masthead .name .accent { color: #22d3ee; }
         .masthead .position {
-            font-size: 12px;
+            font-size: 11.5px;
             color: #67e8f9;
-            margin-top: 3px;
+            margin-top: 2px;
+            letter-spacing: 0.3px;
         }
         .masthead .tagline {
-            font-size: 9.5px;
-            color: #9ca3af;
-            margin-top: 5px;
+            font-size: 8.8px;
+            color: #94a3b8;
+            margin-top: 4px;
         }
-        .contacts { width: 100%; margin-top: 14px; border-collapse: collapse; }
+        .contacts { width: 100%; margin-top: 15px; border-collapse: collapse; }
         .contacts td {
-            width: 25%;
-            font-size: 9px;
-            color: #cbd5e1;
+            width: 33%;
+            padding: 3px 14px 3px 0;
             vertical-align: top;
-            padding-right: 10px;
         }
         .contacts .c-label {
+            display: block;
             color: #22d3ee;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 7.5px;
-            display: block;
-            margin-bottom: 2px;
+            letter-spacing: 1.2px;
+            font-size: 6.8px;
+            margin-bottom: 1px;
         }
-        .contacts a { color: #e5e7eb; text-decoration: none; }
+        .contacts .c-value { font-size: 8.8px; color: #e2e8f0; }
 
-        .section { margin-bottom: 16px; }
+        .section { margin-bottom: 15px; }
+        .section + .section { margin-top: 2px; }
         .section-title {
-            font-size: 11px;
+            font-size: 10px;
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1.8px;
             color: #0e7490;
-            border-bottom: 1px solid #e5e7eb;
-            padding: 0 0 4px 8px;
             border-left: 3px solid #06b6d4;
-            margin-bottom: 9px;
+            padding: 1px 0 4px 8px;
+            margin-bottom: 8px;
+            border-bottom: 1px solid #e6eaf0;
         }
-        .summary { font-size: 10px; color: #374151; text-align: justify; }
+        .summary { font-size: 9.5px; color: #3b4757; }
 
+        .stack-label {
+            font-size: 7.4px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: #9aa6b6;
+            margin: 7px 0 5px;
+        }
         .pill {
             display: inline-block;
             background-color: #ecfeff;
             border: 1px solid #a5f3fc;
             color: #0e7490;
-            font-size: 8.5px;
+            font-size: 8.4px;
             padding: 2px 7px;
-            margin: 0 3px 4px 0;
+            margin: 0 4px 5px 0;
             border-radius: 3px;
         }
-        .pill-muted {
-            background-color: #f8fafc;
-            border-color: #e2e8f0;
-            color: #475569;
-        }
-        .stack-label {
-            font-size: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #94a3b8;
-            margin: 6px 0 4px;
-        }
+        .pill-muted { background-color: #f5f7fa; border-color: #e2e8f0; color: #51606f; }
 
-        .job { margin-bottom: 12px; }
+        .job { margin-bottom: 11px; }
+        .job:last-child { margin-bottom: 0; }
         .job-head { width: 100%; border-collapse: collapse; }
-        .job-company { font-size: 11.5px; font-weight: bold; color: #111827; }
-        .job-role { font-size: 9.5px; color: #0e7490; padding-top: 1px; }
-        .job-summary { font-size: 9.5px; color: #4b5563; margin-top: 4px; text-align: justify; }
-        .job-points { margin-top: 5px; }
-        .job-point {
-            font-size: 9px;
-            color: #374151;
-            padding: 1px 0 4px 12px;
-            text-align: justify;
-        }
-        .job-point .bullet { color: #06b6d4; font-weight: bold; }
+        .job-head .j-left { vertical-align: bottom; }
+        .job-head .j-right { vertical-align: bottom; text-align: right; white-space: nowrap; }
+        .job-company { font-size: 11px; font-weight: bold; color: #18202c; }
+        .job-period { font-size: 8.4px; color: #64748b; }
+        .job-role { font-size: 9.2px; color: #0e7490; margin-top: 1px; }
+        .job-summary { font-size: 9px; color: #56616f; margin-top: 4px; }
+        .job-points { margin-top: 4px; }
+        .job-point { font-size: 8.8px; color: #38424f; padding: 1px 0 4px 12px; }
+        .job-point .b { color: #06b6d4; font-weight: bold; margin-left: -12px; padding-right: 5px; }
 
-        .edu { font-size: 9.5px; color: #374151; }
-        .ref-row { font-size: 9.5px; padding: 2px 0; }
-        .ref-name { font-weight: bold; color: #111827; }
-        .ref-pos { color: #6b7280; }
-        .ref-note { font-size: 8.5px; color: #94a3b8; margin-top: 5px; font-style: italic; }
+        .edu { font-size: 9.2px; color: #3b4757; }
+        .ref-row { font-size: 9.2px; padding: 1.5px 0; }
+        .ref-name { font-weight: bold; color: #18202c; }
+        .ref-pos { color: #64748b; }
+        .ref-note { font-size: 8.2px; color: #9aa6b6; margin-top: 5px; font-style: italic; }
 
         .foot {
-            margin-top: 14px;
-            border-top: 1px solid #e5e7eb;
-            padding-top: 6px;
-            font-size: 7.5px;
-            color: #9ca3af;
+            margin-top: 16px;
+            border-top: 1px solid #e6eaf0;
+            padding-top: 7px;
+            font-size: 7.4px;
+            color: #9aa6b6;
         }
     </style>
 </head>
 <body>
     <div class="masthead">
-        <div class="name">{{ __('global.my_name') }}<span class="accent">_</span></div>
+        <div class="name">{{ __('global.my_name') }}</div>
         <div class="position">{{ __('global.position') }}</div>
-        <div class="tagline">{{ __('global.position_experience') }}</div>
+        <div class="tagline">{{ __('global.position_experience', ['years' => $profileExperienceYears]) }}</div>
         <table class="contacts">
-            <tr>
-                @foreach ($contacts as $contact)
-                    <td>
-                        <span class="c-label">{{ $contact['label'] }}</span>
-                        <a href="{{ $contact['url'] }}">{{ $contact['value'] }}</a>
-                    </td>
-                @endforeach
-            </tr>
+            @foreach (array_chunk($contacts, 3) as $row)
+                <tr>
+                    @foreach ($row as $contact)
+                        <td>
+                            <span class="c-label">{{ $contact['label'] }}</span>
+                            @if ($contact['url'])
+                                <a class="c-value" href="{{ $contact['url'] }}">{{ $contact['value'] }}</a>
+                            @else
+                                <span class="c-value">{{ $contact['value'] }}</span>
+                            @endif
+                        </td>
+                    @endforeach
+                </tr>
+            @endforeach
         </table>
     </div>
 
     <div class="page">
         <div class="section">
             <div class="section-title">{{ __('global.cv_summary_title') }}</div>
-            <p class="summary">{{ __('global.about_description') }}</p>
+            <p class="summary">{{ __('global.about_description', ['years' => $profileExperienceYears]) }}</p>
         </div>
 
         <div class="section">
@@ -225,16 +243,15 @@
                 <div class="job">
                     <table class="job-head">
                         <tr>
-                            <td><span class="job-company">{{ $job['company'] }}</span></td>
-                        </tr>
-                        <tr>
-                            <td><div class="job-role">{{ $job['role'] }}</div></td>
+                            <td class="j-left"><span class="job-company">{{ $job['company'] }}</span></td>
+                            <td class="j-right"><span class="job-period">{{ $job['period'] }}</span></td>
                         </tr>
                     </table>
+                    <div class="job-role">{{ $job['role'] }}</div>
                     <p class="job-summary">{{ $job['summary'] }}</p>
                     <div class="job-points">
                         @foreach ($job['points'] as $point)
-                            <div class="job-point"><span class="bullet">›</span> {{ $point }}</div>
+                            <div class="job-point"><span class="b">></span>{{ $point }}</div>
                         @endforeach
                     </div>
                 </div>
@@ -250,14 +267,14 @@
             <div class="section-title">{{ __('global.cv_references_title') }}</div>
             @foreach ($references as $ref)
                 <div class="ref-row">
-                    <span class="ref-name">{{ $ref['name'] }}</span> — <span class="ref-pos">{{ $ref['position'] }}</span>
+                    <span class="ref-name">{{ $ref['name'] }}</span> - <span class="ref-pos">{{ $ref['position'] }}</span>
                 </div>
             @endforeach
             <div class="ref-note">{{ __('global.cv_references_note') }}</div>
         </div>
 
         <div class="foot">
-            {{ __('global.my_name') }} · {{ __('global.position') }} · {{ __('global.cv_generated_on') }}: {{ now()->format('Y-m-d') }} · {{ str_replace(['https://', 'http://'], '', rtrim(config('app.url'), '/')) }}
+            {{ __('global.my_name') }} · {{ __('global.position') }} · anthony.vbrest@gmail.com · {{ __('global.cv_generated_on') }}: {{ now()->format('Y-m-d') }}
         </div>
     </div>
 </body>

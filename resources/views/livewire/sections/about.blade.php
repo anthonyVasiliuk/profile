@@ -9,27 +9,27 @@ new class extends Component {
 @php
     $isRu = app()->getLocale() === 'ru';
     $aboutUi = [
-        'profile_visual' => $isRu ? "\u{041F}\u{0440}\u{043E}\u{0444}\u{0438}\u{043B}\u{044C}" : 'Profile Visual',
-        'focus' => $isRu ? "\u{0424}\u{043E}\u{043A}\u{0443}\u{0441}" : 'Focus',
-        'focus_text' => $isRu ? "Backend-\u{0441}\u{0438}\u{0441}\u{0442}\u{0435}\u{043C}\u{044B}, API, \u{0438}\u{043D}\u{0442}\u{0435}\u{0433}\u{0440}\u{0430}\u{0446}\u{0438}\u{0438}" : 'Backend systems, APIs, integrations',
-        'mode' => $isRu ? "\u{0424}\u{043E}\u{0440}\u{043C}\u{0430}\u{0442} \u{0440}\u{0430}\u{0431}\u{043E}\u{0442}\u{044B}" : 'Mode',
-        'mode_text' => $isRu ? "\u{041F}\u{0440}\u{043E}\u{0434}\u{0443}\u{043A}\u{0442}\u{043E}\u{0432}\u{044B}\u{0439} delivery \u{0438} \u{043F}\u{0435}\u{0440}\u{0435}\u{0441}\u{0442}\u{0440}\u{043E}\u{0439}\u{043A}\u{0430} legacy" : 'Product delivery and legacy rebuilds',
-        'stack' => $isRu ? "\u{0421}\u{0442}\u{0435}\u{043A}" : 'Stack',
-        'primary_value' => $isRu ? "\u{041E}\u{0441}\u{043D}\u{043E}\u{0432}\u{043D}\u{0430}\u{044F} \u{0446}\u{0435}\u{043D}\u{043D}\u{043E}\u{0441}\u{0442}\u{044C}" : 'Primary Value',
-        'primary_value_text' => $isRu ? "\u{0427}\u{0438}\u{0441}\u{0442}\u{0430}\u{044F} backend-\u{0430}\u{0440}\u{0445}\u{0438}\u{0442}\u{0435}\u{043A}\u{0442}\u{0443}\u{0440}\u{0430} \u{0431}\u{0435}\u{0437} \u{043B}\u{0438}\u{0448}\u{043D}\u{0435}\u{0433}\u{043E} \u{0443}\u{0441}\u{043B}\u{043E}\u{0436}\u{043D}\u{0435}\u{043D}\u{0438}\u{044F}." : 'Clean backend architecture without overengineering.',
-        'working_style' => $isRu ? "\u{0421}\u{0442}\u{0438}\u{043B}\u{044C} \u{0440}\u{0430}\u{0431}\u{043E}\u{0442}\u{044B}" : 'Working Style',
-        'working_style_text' => $isRu ? "Hands-on \u{0438}\u{0441}\u{043F}\u{043E}\u{043B}\u{043D}\u{0435}\u{043D}\u{0438}\u{0435} \u{0438} \u{043F}\u{0440}\u{0430}\u{0433}\u{043C}\u{0430}\u{0442}\u{0438}\u{0447}\u{043D}\u{044B}\u{0435} \u{0442}\u{0435}\u{0445}\u{043D}\u{0438}\u{0447}\u{0435}\u{0441}\u{043A}\u{0438}\u{0435} \u{0440}\u{0435}\u{0448}\u{0435}\u{043D}\u{0438}\u{044F}." : 'Hands-on execution with pragmatic technical decisions.',
-        'systems_engineering' => $isRu ? "\u{0421}\u{0438}\u{0441}\u{0442}\u{0435}\u{043C}\u{043D}\u{0430}\u{044F} \u{0438}\u{043D}\u{0436}\u{0435}\u{043D}\u{0435}\u{0440}\u{0438}\u{044F}" : 'Systems engineering',
-        'education_degree' => $isRu ? "\u{0421}\u{0442}\u{0435}\u{043F}\u{0435}\u{043D}\u{044C} \u{0431}\u{0430}\u{043A}\u{0430}\u{043B}\u{0430}\u{0432}\u{0440}\u{0430}" : 'Bachelor\'s degree',
-        'education_university' => $isRu ? "\u{0411}\u{0440}\u{0435}\u{0441}\u{0442}\u{0441}\u{043A}\u{0438}\u{0439} \u{0433}\u{043E}\u{0441}\u{0443}\u{0434}\u{0430}\u{0440}\u{0441}\u{0442}\u{0432}\u{0435}\u{043D}\u{043D}\u{044B}\u{0439} \u{0442}\u{0435}\u{0445}\u{043D}\u{0438}\u{0447}\u{0435}\u{0441}\u{043A}\u{0438}\u{0439} \u{0443}\u{043D}\u{0438}\u{0432}\u{0435}\u{0440}\u{0441}\u{0438}\u{0442}\u{0435}\u{0442}" : 'Brest State Technical University',
-        'education_faculty' => $isRu ? "\u{0424}\u{0430}\u{043A}\u{0443}\u{043B}\u{044C}\u{0442}\u{0435}\u{0442} \u{0432}\u{044B}\u{0447}\u{0438}\u{0441}\u{043B}\u{0438}\u{0442}\u{0435}\u{043B}\u{044C}\u{043D}\u{044B}\u{0445} \u{043C}\u{0430}\u{0448}\u{0438}\u{043D}, \u{0441}\u{0438}\u{0441}\u{0442}\u{0435}\u{043C} \u{0438} \u{0441}\u{0435}\u{0442}\u{0435}\u{0439}" : 'Faculty of Computers, Systems and Networks',
-        'education_record' => $isRu ? "\u{0410}\u{043A}\u{0430}\u{0434}\u{0435}\u{043C}\u{0438}\u{0447}\u{0435}\u{0441}\u{043A}\u{0430}\u{044F} \u{0437}\u{0430}\u{043F}\u{0438}\u{0441}\u{044C}" : 'Academic record',
-        'education_specialty' => $isRu ? "\u{0421}\u{043F}\u{0435}\u{0446}\u{0438}\u{0430}\u{043B}\u{044C}\u{043D}\u{043E}\u{0441}\u{0442}\u{044C}" : 'Specialty',
-        'control_room' => $isRu ? "\u{0420}\u{0435}\u{0436}\u{0438}\u{043C}: control room" : 'Mode: control room',
-        'workspace_tag' => $isRu ? "\u{0411}\u{044D}\u{043A}\u{0435}\u{043D}\u{0434} / API / delivery" : 'Backend / API / delivery',
-        'period_label' => $isRu ? "\u{041F}\u{0435}\u{0440}\u{0438}\u{043E}\u{0434}" : 'Period',
-        'degree_label' => $isRu ? "\u{0421}\u{0442}\u{0435}\u{043F}\u{0435}\u{043D}\u{044C}" : 'Degree',
-        'faculty_label' => $isRu ? "\u{0424}\u{0430}\u{043A}\u{0443}\u{043B}\u{044C}\u{0442}\u{0435}\u{0442}" : 'Faculty',
+        'profile_visual' => $isRu ? 'Профиль' : 'Profile Visual',
+        'focus' => $isRu ? 'Фокус' : 'Focus',
+        'focus_text' => $isRu ? 'Backend-системы, API, интеграции' : 'Backend systems, APIs, integrations',
+        'mode' => $isRu ? 'Формат работы' : 'Mode',
+        'mode_text' => $isRu ? 'Продуктовая разработка, интеграции и постепенная замена legacy-узлов' : 'Product delivery, integrations, and gradual legacy replacement',
+        'stack' => $isRu ? 'Стек' : 'Stack',
+        'primary_value' => $isRu ? 'Основная ценность' : 'Primary Value',
+        'primary_value_text' => $isRu ? 'Переписываю критичную backend-логику так, чтобы продакшен продолжал работать, а команда не тонула в хаосе.' : 'I rebuild critical backend flows without stopping production or turning delivery into chaos.',
+        'working_style' => $isRu ? 'Стиль работы' : 'Working Style',
+        'working_style_text' => $isRu ? 'Быстро вхожу в домен, собираю рабочую схему интеграций и довожу задачу от идеи до продакшена.' : 'I get into the domain quickly, shape a workable integration model, and carry the task through to production.',
+        'systems_engineering' => $isRu ? 'Системная инженерия' : 'Systems engineering',
+        'education_degree' => $isRu ? 'Степень бакалавра' : 'Bachelor\'s degree',
+        'education_university' => $isRu ? 'Брестский государственный технический университет' : 'Brest State Technical University',
+        'education_faculty' => $isRu ? 'Факультет вычислительных машин, систем и сетей' : 'Faculty of Computers, Systems and Networks',
+        'education_record' => $isRu ? 'Академическая запись' : 'Academic record',
+        'education_specialty' => $isRu ? 'Специальность' : 'Specialty',
+        'control_room' => $isRu ? 'Режим: control room' : 'Mode: control room',
+        'workspace_tag' => $isRu ? 'Backend / API / fullstack support' : 'Backend / API / fullstack support',
+        'period_label' => $isRu ? 'Период' : 'Period',
+        'degree_label' => $isRu ? 'Степень' : 'Degree',
+        'faculty_label' => $isRu ? 'Факультет' : 'Faculty',
     ];
 @endphp
 
@@ -58,7 +58,7 @@ new class extends Component {
                                 {{ __('global.position') }}
                             </h2>
                             <p class="theme-lead mt-6 max-w-[60ch]">
-                                {{ __('global.about_description') }}
+                                {{ __('global.about_description', ['years' => $profileExperienceYears]) }}
                             </p>
                         </div>
 
@@ -85,7 +85,7 @@ new class extends Component {
                                 </div>
                                 <div class="cyber-about-metric rounded-[1.15rem] p-4">
                                     <p class="cyber-panel-title">{{ $aboutUi['stack'] }}</p>
-                                    <p class="theme-copy mt-3 text-sm leading-7">Laravel, SQL, JavaScript, Docker</p>
+                                    <p class="theme-copy mt-3 text-sm leading-7">Laravel, SQL, React, TypeScript, Docker</p>
                                 </div>
                             </div>
                         </div>

@@ -32,36 +32,40 @@ new class extends Component {
         'backbone.png' => ['width' => 900, 'height' => 606],
         'golang.png' => ['width' => 360, 'height' => 180],
         'python.png' => ['width' => 900, 'height' => 900],
+        'typescript.svg' => ['width' => 128, 'height' => 128],
+        'filament.svg' => ['width' => 128, 'height' => 128],
     ];
 
     $primarySkills = [
         ['name' => 'PHP', 'image' => 'php.png'],
         ['name' => 'Laravel', 'image' => 'laravel.png'],
+        ['name' => 'Filament', 'image' => 'filament.svg'],
+        ['name' => 'TypeScript', 'image' => 'typescript.svg'],
         ['name' => 'JavaScript', 'image' => 'js.png'],
-        ['name' => 'jQuery', 'image' => 'jquery.png'],
+        ['name' => 'React', 'image' => 'react.png'],
         ['name' => 'MySQL', 'image' => 'mysql.png'],
         ['name' => 'PostgreSQL', 'image' => 'postgre.png'],
-        ['name' => 'CSS', 'image' => 'css.png'],
         ['name' => 'RESTful APIs', 'image' => 'rest.png'],
-        ['name' => 'HTML', 'image' => 'html.png'],
-        ['name' => 'React', 'image' => 'react.png'],
+        ['name' => 'Redis', 'image' => 'redis.png'],
         ['name' => 'Git', 'image' => 'git.png'],
         ['name' => 'Docker', 'image' => 'docker.png'],
     ];
 
     $additionalSkills = [
-        ['name' => 'Symfony 3', 'image' => 'symfony.png'],
-        ['name' => 'Elasticsearch', 'image' => 'elasticsearch.png'],
-        ['name' => 'GraphQL', 'image' => 'graphql.png'],
-        ['name' => 'Livewire', 'image' => 'livewire.png'],
-        ['name' => 'Apache Kafka', 'image' => 'kafka.png'],
-        ['name' => 'Tailwind CSS', 'image' => 'tailwind.png'],
-        ['name' => 'Redis', 'image' => 'redis.png'],
-        ['name' => 'Bootstrap', 'image' => 'bootstrap.png'],
-        ['name' => 'WordPress', 'image' => 'wordpress.png'],
-        ['name' => 'Backbone.js', 'image' => 'backbone.png'],
         ['name' => 'Go', 'image' => 'golang.png'],
         ['name' => 'Python', 'image' => 'python.png'],
+        ['name' => 'Livewire', 'image' => 'livewire.png'],
+        ['name' => 'Tailwind CSS', 'image' => 'tailwind.png'],
+        ['name' => 'GraphQL', 'image' => 'graphql.png'],
+        ['name' => 'Apache Kafka', 'image' => 'kafka.png'],
+        ['name' => 'Elasticsearch', 'image' => 'elasticsearch.png'],
+        ['name' => 'Symfony', 'image' => 'symfony.png'],
+        ['name' => 'HTML', 'image' => 'html.png'],
+        ['name' => 'CSS', 'image' => 'css.png'],
+        ['name' => 'jQuery', 'image' => 'jquery.png'],
+        ['name' => 'Bootstrap', 'image' => 'bootstrap.png'],
+        ['name' => 'Backbone.js', 'image' => 'backbone.png'],
+        ['name' => 'WordPress', 'image' => 'wordpress.png'],
     ];
 @endphp
 
@@ -71,7 +75,7 @@ new class extends Component {
         'backend' => $isRu ? 'Backend' : 'Backend',
         'backend_text' => $isRu ? 'API-дизайн, интеграции, бизнес-логика, базы данных и backend-процессы продукта.' : 'API design, integrations, business logic, databases, product backend workflows.',
         'adjacent' => $isRu ? 'Смежное' : 'Adjacent',
-        'adjacent_text' => $isRu ? 'Frontend delivery, search, очереди, infra touchpoints и отладка production-систем.' : 'Frontend delivery, search, queues, infra touchpoints, and debugging production systems.',
+        'adjacent_text' => $isRu ? 'Frontend-задачи, поиск, очереди, инфраструктурные узлы и отладка production-систем.' : 'Frontend work, search, queues, infrastructure touchpoints, and debugging production systems.',
         'core_matrix' => $isRu ? 'Матрица основного стека' : 'Core Stack Matrix',
         'ready' => $isRu ? 'в работе' : 'ready',
     ];
@@ -135,13 +139,13 @@ new class extends Component {
                         </h3>
                         <p class="cyber-log text-[11px]">modules://adjacent</p>
                     </div>
-                    <div class="grid gap-3 sm:grid-cols-2">
+                    <div class="grid gap-3 sm:grid-cols-2 2xl:grid-cols-3">
                         @foreach ($additionalSkills as $skill)
-                            <div class="theme-card-muted theme-card-interactive inline-flex min-h-[3.75rem] items-center gap-3 rounded-[0.9rem] px-4 py-3 text-sm">
-                                <div class="cyber-skill-icon cyber-skill-icon-soft flex h-10 w-10 shrink-0 items-center justify-center rounded-[0.8rem] p-2">
-                                    <img class="cyber-skill-image max-h-6 w-auto object-contain" src="{{ Vite::asset('resources/images/skills/'.$skill['image']) }}" alt="{{ $skill['name'] }}" loading="lazy" decoding="async" width="{{ $skillImageMeta[$skill['image']]['width'] }}" height="{{ $skillImageMeta[$skill['image']]['height'] }}">
+                            <div class="theme-card theme-card-interactive cyber-skill-card flex min-h-[3.9rem] items-center gap-3 rounded-[1rem] p-3">
+                                <div class="cyber-skill-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-[0.85rem] p-1.5">
+                                    <img class="cyber-skill-image max-h-7 w-auto object-contain" src="{{ Vite::asset('resources/images/skills/'.$skill['image']) }}" alt="{{ $skill['name'] }}" loading="lazy" decoding="async" width="{{ $skillImageMeta[$skill['image']]['width'] }}" height="{{ $skillImageMeta[$skill['image']]['height'] }}">
                                 </div>
-                                <span class="min-w-0 theme-copy">{{ $skill['name'] }}</span>
+                                <span class="min-w-0 theme-title text-sm font-semibold leading-5">{{ $skill['name'] }}</span>
                             </div>
                         @endforeach
                     </div>

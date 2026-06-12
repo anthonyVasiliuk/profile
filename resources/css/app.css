@@ -147,20 +147,18 @@
     }
 
     .theme-button-primary {
-        border: 1px solid rgba(9, 230, 255, 0.55);
-        background: linear-gradient(135deg, rgba(4, 41, 56, 0.95) 0%, rgba(6, 101, 126, 0.98) 100%);
-        color: var(--accent-contrast);
-        text-shadow: 0 0 0 rgba(161, 251, 255, 0);
-        box-shadow: 0 0 0 1px rgba(9, 230, 255, 0.08), 0 0 28px rgba(9, 230, 255, 0.2);
-        transition: transform 180ms ease, filter 180ms ease, box-shadow 180ms ease, color 180ms ease, text-shadow 180ms ease;
+        border: 1px solid rgba(130, 247, 255, 0.65);
+        background: linear-gradient(135deg, #0a7f9e 0%, #0aa6c9 100%);
+        color: #f2feff;
+        text-shadow: 0 1px 10px rgba(2, 18, 28, 0.5);
+        box-shadow: 0 0 0 1px rgba(9, 230, 255, 0.12), 0 10px 30px rgba(9, 230, 255, 0.28);
+        transition: transform 180ms ease, filter 180ms ease, box-shadow 180ms ease;
     }
 
     .theme-button-primary:hover {
         transform: translateY(-1px);
-        filter: brightness(1.04);
-        color: #f4fdff;
-        text-shadow: 0 0 14px rgba(161, 251, 255, 0.32);
-        box-shadow: 0 0 0 1px rgba(9, 230, 255, 0.16), 0 0 34px rgba(9, 230, 255, 0.32);
+        filter: brightness(1.08);
+        box-shadow: 0 0 0 1px rgba(9, 230, 255, 0.22), 0 12px 38px rgba(9, 230, 255, 0.42);
     }
 
     .theme-button-secondary {
@@ -585,6 +583,41 @@
     .cyber-divider {
         height: 1px;
         background: linear-gradient(90deg, transparent 0%, rgba(9, 230, 255, 0.5) 50%, transparent 100%);
+    }
+
+    /* Soft luminous seam that bleeds into both neighbouring sections to blend the edge. */
+    .cyber-seam {
+        position: relative;
+        height: 0;
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .cyber-seam::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 420px;
+        background:
+            radial-gradient(60% 52% at 50% 50%, rgba(9, 230, 255, 0.16), transparent 72%),
+            radial-gradient(42% 64% at 80% 50%, rgba(125, 89, 255, 0.14), transparent 74%),
+            radial-gradient(42% 64% at 20% 50%, rgba(255, 56, 209, 0.09), transparent 74%);
+        filter: blur(10px);
+    }
+
+    .cyber-seam::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, -50%);
+        width: min(64%, 40rem);
+        height: 1px;
+        background: linear-gradient(90deg, transparent 0%, rgba(9, 230, 255, 0.42) 38%, rgba(125, 89, 255, 0.34) 62%, transparent 100%);
+        opacity: 0.7;
     }
 
     .cyber-footer-grid > * {

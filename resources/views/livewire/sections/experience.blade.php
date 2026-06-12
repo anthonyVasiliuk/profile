@@ -30,22 +30,22 @@ new class extends Component {
         'log' => 'product://proxyma-prosox',
         'cards' => [
             [
-                'title' => $isRu ? 'Новый движок за 3 месяца' : 'New Engine in 3 Months',
+                'title' => $isRu ? 'Новый движок за ~3 месяца' : 'New Engine in ~3 Months',
                 'text' => $isRu
-                    ? 'Переписал основной backend-движок за 3 месяца, параллельно поддерживая legacy-ветку, что ускорило выпуск новых изменений примерно на 40% и убрало ключевые архитектурные ограничения старой системы.'
-                    : 'Rebuilt the core backend engine in 3 months while supporting the live legacy branch, which improved delivery speed by roughly 40% and removed several hard limits from the older architecture.',
+                    ? 'Переписал основной backend-движок примерно за три месяца, не останавливая работающую legacy-ветку, и снял архитектурные ограничения, которые мешали развивать систему дальше.'
+                    : 'Rebuilt the core backend engine in about three months while the legacy branch stayed live, clearing the architectural limits that had been blocking new features.',
             ],
             [
                 'title' => $isRu ? 'Провайдеры и платежи' : 'Providers and Payments',
                 'text' => $isRu
-                    ? 'Подключил 8+ провайдеров прокси и 3 платёжные системы, унифицировал адаптеры, ретраи, синхронизацию остатков и provisioning-флоу, сократив время интеграции новых провайдеров примерно на 60%.'
-                    : 'Integrated 8+ proxy providers and 3 payment systems, standardized adapters, retries, stock sync, and provisioning flows, reducing new-provider rollout time by about 60%.',
+                    ? 'Подключил 8+ провайдеров прокси и 3 платёжные системы под единым слоем адаптеров с общими ретраями, синхронизацией остатков и provisioning, поэтому добавление нового провайдера стало рутинной и предсказуемой задачей.'
+                    : 'Integrated 8+ proxy providers and 3 payment systems behind a unified adapter layer with shared retries, stock sync, and provisioning, so adding a new provider became a routine, low-risk task.',
             ],
             [
-                'title' => $isRu ? 'API performance' : 'API Performance',
+                'title' => $isRu ? 'Горячие точки и стабильность' : 'Hot Paths and Stability',
                 'text' => $isRu
-                    ? 'Оптимизировал тяжёлые API-эндпоинты, запросы к БД, кеширование и фоновые процессы, снизив среднее время ответа примерно на 35% и уменьшив количество peak-load ошибок примерно на 30%.'
-                    : 'Optimized heavy API endpoints, database queries, caching, and background flows, cutting average response time by about 35% and reducing peak-load errors by roughly 30%.',
+                    ? 'Профилировал самые тяжёлые API-эндпоинты, запросы к БД и фоновые процессы. После оптимизации сервис перестал сыпаться под пиком и стал заметно проще в сопровождении.'
+                    : 'Profiled the heaviest API endpoints, database queries, and background jobs. After tuning the hot paths, the service stopped falling over under peak load and became much easier to operate.',
             ],
         ],
     ];
@@ -190,7 +190,7 @@ new class extends Component {
                     </div>
                     <div class="flex flex-wrap items-center gap-3">
                         <span class="cyber-pill-muted inline-flex items-center rounded-[0.8rem] px-3 py-2 text-xs font-medium uppercase tracking-[0.16em]">
-                            2018 - 2020
+                            2016 - 2020
                         </span>
                         <span class="cyber-pill-muted inline-flex items-center rounded-[0.8rem] px-3 py-2 text-xs font-medium uppercase tracking-[0.16em]">
                             {{ $experienceUi['webit_track'] }}
