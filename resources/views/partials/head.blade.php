@@ -20,15 +20,27 @@
 <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700|sora:600,700" rel="stylesheet" />
 
 <script type="text/javascript">
-    (function(c, l, a, r, i, t, y) {
+    (function(c, l, a, r, i) {
         c[a] = c[a] || function() {
             (c[a].q = c[a].q || []).push(arguments);
         };
-        t = l.createElement(r);
-        t.async = 1;
-        t.src = "https://www.clarity.ms/tag/" + i;
-        y = l.getElementsByTagName(r)[0];
-        y.parentNode.insertBefore(t, y);
+
+        const loadClarity = function() {
+            const t = l.createElement(r);
+            t.async = 1;
+            t.src = "https://www.clarity.ms/tag/" + i;
+            const y = l.getElementsByTagName(r)[0];
+            y.parentNode.insertBefore(t, y);
+        };
+
+        c.addEventListener("load", function() {
+            if ("requestIdleCallback" in c) {
+                c.requestIdleCallback(loadClarity, { timeout: 2000 });
+                return;
+            }
+
+            c.setTimeout(loadClarity, 1200);
+        }, { once: true });
     })(window, document, "clarity", "script", "ww9aofpe65");
 </script>
 
