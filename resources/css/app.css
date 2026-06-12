@@ -919,4 +919,16 @@
         backdrop-filter: blur(12px);
         box-shadow: 0 0 24px rgba(9, 230, 255, 0.12);
     }
+
+    @media (max-width: 639px) {
+        section[id] {
+            scroll-margin-top: 11rem;
+        }
+
+        .cyber-nav-link {
+            padding: 0.42rem 0.68rem;
+            font-size: 0.68rem;
+            letter-spacing: 0.14em;
+        }
+    }
 }

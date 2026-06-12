@@ -1,0 +1,35 @@
+name: deploy
+
+on:
+  workflow_run:
+    workflows:
+      - tests
+    types:
+      - completed
+  workflow_dispatch:
+
+jobs:
+  production:
+    if: github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
+    runs-on: ubuntu-latest
+    environment: Production
+
+    steps:
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          port: ${{ secrets.DEPLOY_PORT || '22' }}
+          script: |
+            set -euo pipefail
+            cd "${{ secrets.DEPLOY_PATH }}"
+            git fetch origin main --prune
+            git checkout main
+            git pull --ff-only origin main
+            if [ -n "${{ secrets.DEPLOY_COMPOSE_FILE }}" ]; then
+              bash scripts/deploy-prod.sh "${{ secrets.DEPLOY_COMPOSE_FILE }}"
+            else
+              bash scripts/deploy-prod.sh
+            fi

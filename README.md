@@ -172,6 +172,43 @@ bash scripts/down-prod.sh
 ```
 
 `deploy-prod.sh` rebuilds, restarts, removes orphaned containers, and prints final status.
+It also accepts a compose file override, for example:
+
+```bash
+bash scripts/deploy-prod.sh compose.prod.instagrid-edge.yaml
+```
+
+Or through an environment variable:
+
+```bash
+PROFILE_DEPLOY_COMPOSE_FILE=compose.prod.instagrid-edge.yaml bash scripts/deploy-prod.sh
+```
+
+### GitHub Actions deploy
+
+The repository now includes `.github/workflows/deploy.yml`.
+It runs automatically after the `tests` workflow succeeds on `main`, and it can also be started manually through `workflow_dispatch`.
+
+Required repository secrets:
+
+- `DEPLOY_HOST` — server hostname or IP
+- `DEPLOY_USER` — SSH user
+- `DEPLOY_SSH_KEY` — private SSH key for that user
+- `DEPLOY_PATH` — absolute path to this repo on the server
+- `DEPLOY_PORT` — optional, defaults to `22`
+- `DEPLOY_COMPOSE_FILE` — optional, defaults to `compose.prod.yaml`
+
+Examples for `DEPLOY_COMPOSE_FILE`:
+
+- `compose.prod.yaml`
+- `compose.prod.proxy.yaml`
+- `compose.prod.instagrid-edge.yaml`
+
+For the current Instagrid edge setup, set:
+
+```text
+DEPLOY_COMPOSE_FILE=compose.prod.instagrid-edge.yaml
+```
 
 ### Notes
 

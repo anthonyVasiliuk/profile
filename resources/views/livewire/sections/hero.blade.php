@@ -38,7 +38,7 @@ new class extends Component {
     <div class="absolute left-[-7rem] top-28 -z-10 h-64 w-64 rounded-full blur-3xl" style="background-color: rgba(9, 230, 255, 0.09);"></div>
     <div class="absolute right-[-5rem] top-16 -z-10 h-72 w-72 rounded-full blur-3xl" style="background-color: rgba(255, 56, 209, 0.08);"></div>
 
-    <div class="mx-auto grid min-h-[calc(100vh-6rem)] max-w-7xl gap-14 px-6 pb-20 pt-44 lg:grid-cols-[1.02fr_0.98fr] lg:items-stretch lg:gap-16 lg:pb-24 lg:pt-48">
+    <div class="mx-auto grid min-h-[calc(100vh-6rem)] max-w-7xl gap-14 px-6 pb-20 pt-56 sm:pt-44 lg:grid-cols-[1.02fr_0.98fr] lg:items-stretch lg:gap-16 lg:pb-24 lg:pt-48">
         <div class="flex max-w-3xl flex-col justify-center lg:h-full">
             <div class="theme-pill inline-flex items-center rounded-[0.85rem] px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] backdrop-blur sm:text-sm">
                 {{ __('global.hero_badge') }}
