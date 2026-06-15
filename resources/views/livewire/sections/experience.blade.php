@@ -17,29 +17,29 @@ new class extends Component {
         'proxy_period' => $isRu ? '2025 - сейчас' : '2025 - now',
     ];
 
-    $proxyma = [
-        'company' => 'Proxyma / Prosox',
+    $currentProduct = [
+        'company' => $isRu ? 'Текущий продукт (NDA)' : 'Current Product (NDA)',
         'role' => $isRu
             ? 'Senior Backend Developer (2025 - настоящее время)'
             : 'Senior Backend Developer (2025 - Present)',
         'summary' => $isRu
-            ? 'Продуктовая backend-роль с фокусом на поддержку legacy-платформы продажи прокси и постепенный перевод ключевой логики на новый движок без остановки рабочего продукта.'
-            : 'Product backend role focused on keeping a legacy proxy-sales platform stable while migrating its core logic to a new engine without disrupting the live product.',
-        'track_label' => $isRu ? 'product backend + legacy rewrite' : 'product backend + legacy rewrite',
+            ? 'Продуктовая backend-роль с фокусом на поддержку legacy-платформы и перенос ключевой логики на новый движок без остановки рабочего продукта.'
+            : 'Product backend role focused on keeping a legacy commercial platform stable while migrating its core logic to a new engine without disrupting the live product.',
+        'track_label' => $isRu ? 'product backend + platform rewrite' : 'product backend + platform rewrite',
         'case_title' => $isRu ? 'Ключевые результаты' : 'Key outcomes',
-        'log' => 'product://proxyma-prosox',
+        'log' => 'product://current-platform',
         'cards' => [
             [
                 'title' => $isRu ? 'Новый движок за ~3 месяца' : 'New Engine in ~3 Months',
                 'text' => $isRu
-                    ? 'Переписал основной backend-движок примерно за три месяца, не останавливая работающую legacy-ветку, и снял архитектурные ограничения, которые мешали развивать систему дальше.'
+                    ? 'Переписал основной backend-движок примерно за три месяца, не останавливая рабочую legacy-ветку, и снял архитектурные ограничения для дальнейшего развития платформы.'
                     : 'Rebuilt the core backend engine in about three months while the legacy branch stayed live, clearing the architectural limits that had been blocking new features.',
             ],
             [
-                'title' => $isRu ? 'Провайдеры и платежи' : 'Providers and Payments',
+                'title' => $isRu ? 'Внешние провайдеры и биллинг' : 'External Providers and Billing',
                 'text' => $isRu
-                    ? 'Подключил 8+ провайдеров прокси и 3 платёжные системы под единым слоем адаптеров с общими ретраями, синхронизацией остатков и provisioning, поэтому добавление нового провайдера стало рутинной и предсказуемой задачей.'
-                    : 'Integrated 8+ proxy providers and 3 payment systems behind a unified adapter layer with shared retries, stock sync, and provisioning, so adding a new provider became a routine, low-risk task.',
+                    ? 'Подключил 8+ внешних провайдеров и 3 биллинговые системы под единым слоем адаптеров с общими ретраями, синхронизацией остатков и provisioning.'
+                    : 'Integrated 8+ external providers and 3 billing systems behind a unified adapter layer with shared retries, stock sync, and provisioning, so adding a new provider became a routine, low-risk task.',
             ],
             [
                 'title' => $isRu ? 'Горячие точки и стабильность' : 'Hot Paths and Stability',
@@ -71,31 +71,28 @@ new class extends Component {
             <article class="cyber-dossier cyber-timeline-card relative rounded-[1.9rem] p-8 sm:p-10">
                 <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                     <div>
-                        <a href="https://proxyma.io" target="_blank" rel="noopener noreferrer" class="theme-display theme-link-strong group inline-flex items-center gap-2 text-2xl font-semibold">
-                            <span>{{ $proxyma['company'] }}</span>
-                            <livewire:socials.link-icon />
-                        </a>
-                        <p class="theme-copy mt-2 text-lg font-medium">{{ $proxyma['role'] }}</p>
+                        <h3 class="theme-display theme-title text-2xl font-semibold">{{ $currentProduct['company'] }}</h3>
+                        <p class="theme-copy mt-2 text-lg font-medium">{{ $currentProduct['role'] }}</p>
                     </div>
                     <div class="flex flex-wrap items-center gap-3">
                         <span class="cyber-pill-muted inline-flex items-center rounded-[0.8rem] px-3 py-2 text-xs font-medium uppercase tracking-[0.16em]">
                             {{ $experienceUi['proxy_period'] }}
                         </span>
                         <span class="cyber-pill-muted inline-flex items-center rounded-[0.8rem] px-3 py-2 text-xs font-medium uppercase tracking-[0.16em]">
-                            {{ $proxyma['track_label'] }}
+                            {{ $currentProduct['track_label'] }}
                         </span>
                     </div>
                 </div>
 
-                <p class="theme-meta mt-5 max-w-4xl text-base leading-8">{{ $proxyma['summary'] }}</p>
+                <p class="theme-meta mt-5 max-w-4xl text-base leading-8">{{ $currentProduct['summary'] }}</p>
 
                 <div class="mt-8">
                     <div class="mb-5 flex items-center justify-between gap-4">
-                        <p class="theme-kicker">{{ $proxyma['case_title'] }}</p>
-                        <p class="cyber-log text-[11px]">{{ $proxyma['log'] }}</p>
+                        <p class="theme-kicker">{{ $currentProduct['case_title'] }}</p>
+                        <p class="cyber-log text-[11px]">{{ $currentProduct['log'] }}</p>
                     </div>
                     <div class="cyber-panel-grid grid gap-4 lg:grid-cols-3">
-                        @foreach ($proxyma['cards'] as $card)
+                        @foreach ($currentProduct['cards'] as $card)
                             <div class="theme-card-muted theme-card-interactive cyber-panel-card rounded-[1.3rem] p-5">
                                 <h3 class="theme-title text-lg font-semibold">{{ $card['title'] }}</h3>
                                 <p class="theme-meta mt-3 text-[15px] leading-7">{{ $card['text'] }}</p>

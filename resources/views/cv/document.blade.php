@@ -28,19 +28,19 @@
 
     $experience = [
         [
-            'company' => 'Proxyma / Prosox',
+            'company' => $isRu ? 'Текущий продукт (NDA)' : 'Current Product (NDA)',
             'role' => $isRu ? 'Senior Backend-разработчик' : 'Senior Backend Developer',
             'period' => $isRu ? '2025 - наст. время' : '2025 - Present',
             'summary' => $isRu
-                ? 'Продуктовая backend-роль: поддержка legacy-платформы продажи прокси и постепенный перевод ключевой логики на новый движок без остановки рабочего продукта.'
-                : 'Product backend role: keeping a legacy proxy-sales platform stable while migrating its core logic to a new engine without disrupting the live product.',
+                ? 'Продуктовая backend-роль: поддержка legacy-платформы и постепенный перевод ключевой логики на новый движок без остановки рабочего продукта.'
+                : 'Product backend role: keeping a legacy commercial platform stable while migrating its core logic to a new engine without disrupting the live product.',
             'points' => [
                 $isRu
-                    ? 'Переписал основной backend-движок примерно за три месяца, параллельно поддерживая legacy-ветку, и снял архитектурные ограничения, которые мешали развитию продукта.'
+                    ? 'Переписал основной backend-движок примерно за три месяца, параллельно поддерживая рабочую legacy-ветку и снимая архитектурные ограничения.'
                     : 'Rebuilt the core backend engine in about three months while supporting the live legacy branch, removing the architectural limits that had been blocking product growth.',
                 $isRu
-                    ? 'Подключил 8+ провайдеров прокси и 3 платёжные системы под единым адаптерным слоем с общими ретраями, синхронизацией остатков и provisioning.'
-                    : 'Integrated 8+ proxy providers and 3 payment systems behind one adapter layer with shared retries, stock sync, and provisioning.',
+                    ? 'Подключил 8+ внешних провайдеров и 3 биллинговые системы под единым адаптерным слоем с общими ретраями, синхронизацией остатков и provisioning.'
+                    : 'Integrated 8+ external providers and 3 billing systems behind one adapter layer with shared retries, stock sync, and provisioning.',
                 $isRu
                     ? 'Профилировал тяжёлые API-эндпоинты, запросы к БД и фоновые процессы; после оптимизации сервис стал стабильнее под пиковыми нагрузками.'
                     : 'Profiled heavy API endpoints, database queries, and background jobs; after optimization the service became more stable under peak load.',

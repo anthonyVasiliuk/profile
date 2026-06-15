@@ -19,7 +19,7 @@ new class extends Component {
         'developer_3' => $isRu ? '// Переписываю legacy без остановки продакшена' : '// Rewriting legacy without stopping production',
         'developer_4' => $isRu ? '// и собираю интеграции под единый слой' : '// and unifying integrations behind one layer',
         'boot_1' => '> open profile --focus=backend',
-        'boot_2' => $isRu ? 'booting proxyma-engine ... готово' : 'booting proxyma-engine ... done',
+        'boot_2' => $isRu ? 'booting private-product-core ... готово' : 'booting private-product-core ... done',
         'boot_3' => $isRu ? 'loading astryhub-content ... готово' : 'loading astryhub-content ... done',
         'boot_4' => $isRu ? 'starting trade-it-worker ... готово' : 'starting trade-it-worker ... done',
         'boot_5' => $isRu ? 'рабочий контекст загружен' : 'workspace context loaded',
@@ -134,14 +134,7 @@ new class extends Component {
                         <div class="cyber-terminal flex h-full flex-col rounded-[1.2rem] p-4">
                             <p class="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--accent)]">{{ $heroUi['projects'] }}</p>
                             <div class="cyber-log space-y-2 text-xs">
-                                <p>
-                                    <a href="https://proxyma.io" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between gap-3 transition-colors hover:text-[var(--accent-secondary)]">
-                                        <span>/proxyma-engine</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="shrink-0 opacity-70 transition group-hover:opacity-100" width="10" height="10" aria-hidden="true">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 16L16 8M10 8h6v6" />
-                                        </svg>
-                                    </a>
-                                </p>
+                                <p>/private-product-core</p>
                                 <p>
                                     <a href="https://astryhub.com" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between gap-3 transition-colors hover:text-[var(--accent-secondary)]">
                                         <span>/astryhub</span>
