@@ -17,3 +17,15 @@ public/storage
 .env.docker
 .env.docker.prod
 .phpunit.cache
+tests
+scripts
+README.md
+phpunit.xml
+compose*.yaml
+compose*.yml
+render.yaml
+*.log
+*.sql
+*.sqlite
+*.sqlite-*
+profile.instiles.online-*.json

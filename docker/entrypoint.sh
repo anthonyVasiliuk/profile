@@ -48,4 +48,28 @@ envsubst '${PORT}' < /etc/nginx/templates/default.conf.template > /etc/nginx/htt
 
 chown -R www-data:www-data "$STORAGE_DIR" "$APP_DIR/bootstrap/cache"
 
+if [ "${1:-}" = "app-server" ]; then
+    php-fpm -F &
+    php_fpm_pid="$!"
+
+    nginx -g "daemon off;" &
+    nginx_pid="$!"
+
+    trap 'kill -TERM "$php_fpm_pid" "$nginx_pid" 2>/dev/null || true' INT TERM
+
+    while true; do
+        if ! kill -0 "$php_fpm_pid" 2>/dev/null; then
+            wait "$php_fpm_pid" || exit "$?"
+            exit 1
+        fi
+
+        if ! kill -0 "$nginx_pid" 2>/dev/null; then
+            wait "$nginx_pid" || exit "$?"
+            exit 1
+        fi
+
+        sleep 1
+    done
+fi
+
 exec "$@"
