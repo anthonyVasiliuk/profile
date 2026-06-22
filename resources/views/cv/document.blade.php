@@ -17,6 +17,8 @@
 
     $coreStack = ['PHP', 'Laravel', 'Filament', 'TypeScript', 'JavaScript', 'React', 'MySQL', 'PostgreSQL', 'RESTful APIs', 'Redis', 'Git', 'Docker'];
     $adjacentStack = ['Go', 'Python', 'Livewire', 'Tailwind CSS', 'GraphQL', 'Apache Kafka', 'Elasticsearch', 'Symfony', 'HTML', 'CSS', 'jQuery', 'Bootstrap', 'Backbone.js', 'WordPress'];
+    $githubUsername = 'anthonyVasiliuk';
+    $githubProfileUrl = 'https://github.com/'.$githubUsername;
 
     $splitRole = function (string $role): array {
         if (preg_match('/^(.*?)\s*\(([^)]*)\)\s*$/u', $role, $m)) {
@@ -186,6 +188,15 @@
         .ref-name { font-weight: bold; color: #18202c; }
         .ref-pos { color: #64748b; }
         .ref-note { font-size: 8.2px; color: #9aa6b6; margin-top: 5px; font-style: italic; }
+        .github-card {
+            border: 1px solid #d7eef3;
+            background-color: #f8fcfd;
+            padding: 8px 9px 9px;
+        }
+        .github-head { width: 100%; border-collapse: collapse; margin-bottom: 6px; }
+        .github-user { font-size: 9.2px; font-weight: bold; color: #18202c; }
+        .github-link { font-size: 8.2px; color: #0e7490; text-align: right; }
+        .github-note { font-size: 8px; color: #56616f; margin-top: 5px; }
 
         .foot {
             margin-top: 16px;
@@ -235,6 +246,21 @@
             @foreach ($adjacentStack as $skill)
                 <span class="pill pill-muted">{{ $skill }}</span>
             @endforeach
+        </div>
+
+        <div class="section">
+            <div class="section-title">GitHub</div>
+            <div class="github-card">
+                <table class="github-head">
+                    <tr>
+                        <td class="github-user">{{ $githubUsername }}</td>
+                        <td class="github-link"><a href="{{ $githubProfileUrl }}">github.com/{{ $githubUsername }}</a></td>
+                    </tr>
+                </table>
+                <div class="github-note">
+                    {{ $isRu ? 'PDF-версия CV не встраивает внешнюю карту коммитов. Актуальная публичная активность доступна в профиле GitHub по ссылке выше; закрытые коммерческие репозитории и NDA-проекты там также не отображаются.' : 'The PDF version does not embed the external contribution chart. Current public activity is available in the GitHub profile linked above; private commercial repositories and NDA projects are not reflected there either.' }}
+                </div>
+            </div>
         </div>
 
         <div class="section">

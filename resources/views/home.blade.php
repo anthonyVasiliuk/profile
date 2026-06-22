@@ -5,6 +5,8 @@
     <div class="cyber-seam" aria-hidden="true"></div>
     <livewire:sections.skills />
     <div class="cyber-seam" aria-hidden="true"></div>
+    <livewire:sections.github />
+    <div class="cyber-seam" aria-hidden="true"></div>
     <livewire:sections.projects />
     <div class="cyber-seam" aria-hidden="true"></div>
     <livewire:sections.experience />
