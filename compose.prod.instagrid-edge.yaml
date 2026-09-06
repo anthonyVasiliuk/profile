@@ -30,4 +30,4 @@ volumes:
 networks:
   edge_net:
     external: true
-    name: instiles_default
+    name: ${EDGE_NETWORK:-instiles_default}

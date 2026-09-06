@@ -11,6 +11,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        // The app is only reachable through the edge Caddy container, never directly,
+        // so its X-Forwarded-* headers can be trusted. Without this, url()->current()
+        // renders canonical and og:url with the http scheme.
+        $middleware->trustProxies(at: '*');
+
         $middleware->web(append: [
             App\Http\Middleware\SetLocale::class,
             App\Http\Middleware\AddSecurityHeaders::class,

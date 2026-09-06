@@ -38,29 +38,36 @@ Then run:
 docker compose up -d --build
 ```
 
+The site runs on its own domain, `anthonyv.online`.
+
+`.env.docker.prod` is not tracked in git, so the server keeps its own copy. Changing the domain means editing that file on the server too, not only here.
+
+The active production mode is **behind the existing Instagrid Caddy container** — see that section below. The two sections before it describe standalone alternatives.
+
 ### VPS / production run
 
 Prepared target:
 
-- `APP_URL=https://profile.instiles.online`
-- `CADDY_DOMAIN=profile.instiles.online`
+- `APP_URL=https://anthonyv.online`
+- `CADDY_DOMAIN=anthonyv.online`
 - `CADDY_EMAIL=admin@instiles.online`
 - `HOST_HTTP_PORT=8081`
 - `HOST_HTTPS_PORT=443`
 
 Edit `.env.docker.prod` first:
 
-- confirm `APP_URL=https://profile.instiles.online`
-- confirm `CADDY_DOMAIN=profile.instiles.online`
+- confirm `APP_URL=https://anthonyv.online`
+- confirm `CADDY_DOMAIN=anthonyv.online`
 - change `CADDY_EMAIL=admin@instiles.online` if you want Let's Encrypt notices to go to another mailbox
 - keep `HOST_HTTP_PORT=8081` if port `80` is already occupied on the server
 - keep `HOST_HTTPS_PORT=443` if port `443` is free
 
 DNS before first start:
 
-- create an `A` record for `profile.instiles.online`
+- create an `A` record for `anthonyv.online`
 - point it to your VPS public IPv4
-- if you use IPv6, add an `AAAA` record too
+- add an `A` record for `www.anthonyv.online` too, otherwise Caddy keeps failing to issue a certificate for it
+- if you use IPv6, add `AAAA` records as well
 
 Then run on the server:
 
@@ -75,7 +82,7 @@ Port notes:
 
 - this setup is prepared for `8081 -> 80` and `443 -> 443`
 - that solves the current conflict when port `80` is already taken by another service
-- if `443` is also occupied, standard HTTPS issuance for `profile.instiles.online` will not work directly on this stack until you either free `443` or put an existing reverse proxy in front of it
+- if `443` is also occupied, standard HTTPS issuance for `anthonyv.online` will not work directly on this stack until you either free `443` or put an existing reverse proxy in front of it
 
 ### VPS / production behind existing nginx or caddy
 
@@ -95,13 +102,13 @@ Start it with:
 docker compose -f compose.prod.proxy.yaml up -d --build
 ```
 
-Then point your existing reverse proxy for `profile.instiles.online` to `http://127.0.0.1:8088`.
+Then point your existing reverse proxy for `anthonyv.online` to `http://127.0.0.1:8088`.
 
 Minimal nginx example:
 
 ```nginx
 server {
-    server_name profile.instiles.online;
+    server_name anthonyv.online;
 
     location / {
         proxy_pass http://127.0.0.1:8088;
@@ -116,7 +123,7 @@ server {
 Minimal Caddy example:
 
 ```caddy
-profile.instiles.online {
+anthonyv.online {
     reverse_proxy 127.0.0.1:8088
 }
 ```
@@ -133,21 +140,45 @@ Start it with:
 docker compose -f compose.prod.instagrid-edge.yaml up -d --build
 ```
 
-Then add this block to `d:/Work/Projects/instagrid/Caddyfile` and restart the `instagrid` stack:
+The public hostname lives in the `instagrid` repo, because that stack owns ports `80/443`. Its `Caddyfile` must contain:
 
 ```caddy
-profile.instiles.online {
+anthonyv.online {
     encode zstd gzip
+
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "SAMEORIGIN"
+        Referrer-Policy "strict-origin-when-cross-origin"
+    }
+
     reverse_proxy profile-app:8080
 }
+
+www.anthonyv.online {
+    redir https://anthonyv.online{uri} permanent
+}
+
+profile.instiles.online {
+    redir https://anthonyv.online{uri} permanent
+}
+```
+
+After editing it, reload Caddy on the server from the `instagrid` project root:
+
+```bash
+docker compose exec caddy caddy reload --config /etc/caddy/Caddyfile
 ```
 
 Notes:
 
-- set `EDGE_NETWORK` in `.env.docker.prod` to the real Docker network name used by the `instagrid` stack
-- default is `instagrid_default`, but your server may use another name
-- find it with `docker network ls`
+- `profile.instiles.online` is the previous hostname, kept as a permanent redirect so old links keep working; drop that block once nothing points there anymore
+- the `Caddyfile` in `instagrid` is mounted read-only, so a reload is enough — no rebuild of that stack
 - `profile-app` is the network alias exported by this portfolio stack for Caddy to reach
+- the network name defaults to `instiles_default`; override it with the `EDGE_NETWORK` shell variable if the `instagrid` stack uses another one
+- `EDGE_NETWORK` is read by Docker Compose itself, so it must come from the shell or a `.env` file next to the compose file — putting it in `.env.docker.prod` has no effect, since `env_file` is only passed to the container
+- find the real name with `docker network ls`
 
 ## Scripts
 
