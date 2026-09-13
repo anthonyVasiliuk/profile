@@ -176,6 +176,7 @@ Notes:
 - `profile.instiles.online` is the previous hostname, kept as a permanent redirect so old links keep working; drop that block once nothing points there anymore
 - the `Caddyfile` in `instagrid` is mounted read-only, so a reload is enough — no rebuild of that stack
 - `profile-app` is the network alias exported by this portfolio stack for Caddy to reach
+- the compose service is named `profile`, not `app`: Compose registers every service name as a DNS alias on the shared network, and `app` is already taken by the instagrid app, so `reverse_proxy app:3000` there would resolve to both containers
 - the network name defaults to `instiles_default`; override it with the `EDGE_NETWORK` shell variable if the `instagrid` stack uses another one
 - `EDGE_NETWORK` is read by Docker Compose itself, so it must come from the shell or a `.env` file next to the compose file — putting it in `.env.docker.prod` has no effect, since `env_file` is only passed to the container
 - find the real name with `docker network ls`
@@ -202,17 +203,17 @@ bash scripts/logs-prod.sh
 bash scripts/down-prod.sh
 ```
 
-`deploy-prod.sh` rebuilds, restarts, removes orphaned containers, and prints final status.
+`deploy-prod.sh` rebuilds, restarts, removes orphaned containers, and prints final status. All three scripts default to `compose.prod.instagrid-edge.yaml`, the active production mode; pass another compose file to use a standalone stack.
 It also accepts a compose file override, for example:
 
 ```bash
-bash scripts/deploy-prod.sh compose.prod.instagrid-edge.yaml
+bash scripts/deploy-prod.sh compose.prod.yaml
 ```
 
 Or through an environment variable:
 
 ```bash
-PROFILE_DEPLOY_COMPOSE_FILE=compose.prod.instagrid-edge.yaml bash scripts/deploy-prod.sh
+PROFILE_DEPLOY_COMPOSE_FILE=compose.prod.yaml bash scripts/deploy-prod.sh
 ```
 
 ### GitHub Actions deploy
@@ -227,7 +228,7 @@ Required repository secrets:
 - `DEPLOY_SSH_KEY` — private SSH key for that user
 - `DEPLOY_PATH` — absolute path to this repo on the server
 - `DEPLOY_PORT` — optional, defaults to `22`
-- `DEPLOY_COMPOSE_FILE` — optional, defaults to `compose.prod.yaml`
+- `DEPLOY_COMPOSE_FILE` — optional, defaults to `compose.prod.instagrid-edge.yaml`
 
 Examples for `DEPLOY_COMPOSE_FILE`:
 

@@ -1,5 +1,7 @@
 services:
-  app:
+  # Not named "app": the instagrid stack already has an "app" service on the shared
+  # edge network, and Compose registers every service name as a DNS alias there.
+  profile:
     build:
       context: .
       dockerfile: Dockerfile

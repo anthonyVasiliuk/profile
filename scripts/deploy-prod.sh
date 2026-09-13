@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT_DIR"
 
-COMPOSE_FILE_PATH="${1:-${PROFILE_DEPLOY_COMPOSE_FILE:-compose.prod.yaml}}"
+COMPOSE_FILE_PATH="${1:-${PROFILE_DEPLOY_COMPOSE_FILE:-compose.prod.instagrid-edge.yaml}}"
 
 if [[ ! -f ".env.docker.prod" ]]; then
     echo ".env.docker.prod not found"
