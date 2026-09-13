@@ -23,9 +23,10 @@ Route::get('/ru', function () {
     return view('home');
 })->name('home.ru');
 
+// The XML declaration stays out of the Blade view: with short_open_tag enabled
+// (the PHP default when no php.ini is present) "<?xml" breaks view compilation.
 Route::get('/sitemap.xml', function () {
-    return response()
-        ->view('sitemap')
+    return response('<?xml version="1.0" encoding="UTF-8"?>'."\n".view('sitemap')->render())
         ->header('Content-Type', 'application/xml; charset=UTF-8');
 })->name('sitemap');
 
