@@ -30,5 +30,12 @@ class AppServiceProvider extends ServiceProvider
 
         View::share('profileCareerStartYear', $careerStartYear);
         View::share('profileExperienceYears', $experienceYears);
+
+        View::composer(['partials.head', 'sitemap'], function ($view) {
+            $view->with('localeAlternates', [
+                'en' => route('home'),
+                'ru' => route('home.ru'),
+            ]);
+        });
     }
 }
