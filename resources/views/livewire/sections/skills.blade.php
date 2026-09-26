@@ -7,31 +7,32 @@ new class extends Component {
 }; ?>
 
 @php
+    // 'scale' zooms logos whose files carry wide transparent margins, so every icon fills its tile evenly.
     $skillImageMeta = [
-        'php.png' => ['width' => 960, 'height' => 960],
-        'laravel.png' => ['width' => 920, 'height' => 952],
+        'php.png' => ['width' => 192, 'height' => 192],
+        'laravel.png' => ['width' => 186, 'height' => 192],
         'js.png' => ['width' => 97, 'height' => 100],
-        'jquery.png' => ['width' => 360, 'height' => 360],
+        'jquery.png' => ['width' => 192, 'height' => 192],
         'mysql.png' => ['width' => 103, 'height' => 100],
-        'postgre.png' => ['width' => 900, 'height' => 600],
+        'postgre.png' => ['width' => 192, 'height' => 128, 'scale' => 1.8],
         'css.png' => ['width' => 85, 'height' => 100],
         'rest.png' => ['width' => 300, 'height' => 300],
         'html.png' => ['width' => 85, 'height' => 100],
         'react.png' => ['width' => 106, 'height' => 100],
         'git.png' => ['width' => 97, 'height' => 100],
-        'docker.png' => ['width' => 920, 'height' => 920],
-        'symfony.png' => ['width' => 900, 'height' => 520],
-        'elasticsearch.png' => ['width' => 348, 'height' => 345],
-        'graphql.png' => ['width' => 268, 'height' => 188],
-        'livewire.png' => ['width' => 400, 'height' => 400],
-        'kafka.png' => ['width' => 900, 'height' => 512],
-        'tailwind.png' => ['width' => 920, 'height' => 552],
-        'redis.png' => ['width' => 920, 'height' => 920],
+        'docker.png' => ['width' => 192, 'height' => 192],
+        'symfony.png' => ['width' => 192, 'height' => 111, 'scale' => 1.7],
+        'elasticsearch.png' => ['width' => 192, 'height' => 190],
+        'graphql.png' => ['width' => 192, 'height' => 135, 'scale' => 1.6],
+        'livewire.png' => ['width' => 192, 'height' => 192],
+        'kafka.png' => ['width' => 192, 'height' => 109, 'scale' => 1.7],
+        'tailwind.png' => ['width' => 192, 'height' => 115],
+        'redis.png' => ['width' => 192, 'height' => 192],
         'bootstrap.png' => ['width' => 97, 'height' => 100],
-        'wordpress.png' => ['width' => 900, 'height' => 512],
-        'backbone.png' => ['width' => 900, 'height' => 606],
-        'golang.png' => ['width' => 360, 'height' => 180],
-        'python.png' => ['width' => 900, 'height' => 900],
+        'wordpress.png' => ['width' => 192, 'height' => 109, 'scale' => 1.85],
+        'backbone.png' => ['width' => 192, 'height' => 129, 'scale' => 1.85],
+        'golang.png' => ['width' => 192, 'height' => 96],
+        'python.png' => ['width' => 192, 'height' => 192, 'scale' => 1.4],
         'typescript.svg' => ['width' => 128, 'height' => 128],
         'filament.svg' => ['width' => 128, 'height' => 128],
     ];
@@ -117,10 +118,10 @@ new class extends Component {
                     </div>
                     <div class="grid grid-cols-2 gap-3 sm:gap-4 2xl:grid-cols-3">
                         @foreach ($primarySkills as $skill)
-                            <div class="theme-card theme-card-interactive cyber-skill-card rounded-[1.25rem] p-4 sm:min-h-[5.75rem]">
-                                <div class="flex items-center gap-4">
-                                    <div class="cyber-skill-icon flex h-14 w-14 shrink-0 items-center justify-center rounded-[1rem] p-2">
-                                        <img class="cyber-skill-image max-h-9 w-auto object-contain" src="{{ Vite::asset('resources/images/skills/'.$skill['image']) }}" alt="{{ $skill['name'] }}" loading="lazy" decoding="async" width="{{ $skillImageMeta[$skill['image']]['width'] }}" height="{{ $skillImageMeta[$skill['image']]['height'] }}">
+                            <div class="theme-card theme-card-interactive cyber-skill-card rounded-[1rem] p-2.5 sm:min-h-[5.75rem] sm:rounded-[1.25rem] sm:p-4">
+                                <div class="flex items-center gap-2 sm:gap-4">
+                                    <div class="cyber-skill-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-[0.8rem] p-1.5 sm:h-14 sm:w-14 sm:rounded-[1rem] sm:p-2">
+                                        <img class="cyber-skill-image" @isset($skillImageMeta[$skill['image']]['scale']) style="transform: scale({{ $skillImageMeta[$skill['image']]['scale'] }})" @endisset src="{{ Vite::asset('resources/images/skills/'.$skill['image']) }}" alt="{{ $skill['name'] }}" loading="lazy" decoding="async" width="{{ $skillImageMeta[$skill['image']]['width'] }}" height="{{ $skillImageMeta[$skill['image']]['height'] }}">
                                     </div>
                                     <div class="min-w-0">
                                         <p class="theme-title text-base font-semibold leading-5">{{ $skill['name'] }}</p>
@@ -141,9 +142,9 @@ new class extends Component {
                     </div>
                     <div class="grid grid-cols-2 gap-3 2xl:grid-cols-3">
                         @foreach ($additionalSkills as $skill)
-                            <div class="theme-card theme-card-interactive cyber-skill-card flex min-h-[3.9rem] items-center gap-3 rounded-[1rem] p-3">
-                                <div class="cyber-skill-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-[0.85rem] p-1.5">
-                                    <img class="cyber-skill-image max-h-7 w-auto object-contain" src="{{ Vite::asset('resources/images/skills/'.$skill['image']) }}" alt="{{ $skill['name'] }}" loading="lazy" decoding="async" width="{{ $skillImageMeta[$skill['image']]['width'] }}" height="{{ $skillImageMeta[$skill['image']]['height'] }}">
+                            <div class="theme-card theme-card-interactive cyber-skill-card flex min-h-[3.9rem] items-center gap-2 rounded-[1rem] p-2.5 sm:gap-3 sm:p-3">
+                                <div class="cyber-skill-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-[0.8rem] p-1.5 sm:h-12 sm:w-12 sm:rounded-[0.85rem]">
+                                    <img class="cyber-skill-image" @isset($skillImageMeta[$skill['image']]['scale']) style="transform: scale({{ $skillImageMeta[$skill['image']]['scale'] }})" @endisset src="{{ Vite::asset('resources/images/skills/'.$skill['image']) }}" alt="{{ $skill['name'] }}" loading="lazy" decoding="async" width="{{ $skillImageMeta[$skill['image']]['width'] }}" height="{{ $skillImageMeta[$skill['image']]['height'] }}">
                                 </div>
                                 <span class="min-w-0 theme-title text-sm font-semibold leading-5">{{ $skill['name'] }}</span>
                             </div>

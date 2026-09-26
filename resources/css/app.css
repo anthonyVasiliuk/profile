@@ -611,26 +611,20 @@
         z-index: 1;
     }
 
+    /* Light tile: brand logos are drawn for light backgrounds and dark ones (MySQL, PHP, Go, Symfony) vanish on navy. */
     .cyber-skill-icon {
-        border: 1px solid rgba(9, 230, 255, 0.18);
-        background:
-            radial-gradient(circle at 30% 30%, rgba(9, 230, 255, 0.18), transparent 55%),
-            linear-gradient(180deg, rgba(15, 33, 58, 0.96) 0%, rgba(10, 23, 42, 0.94) 100%);
-        box-shadow: inset 0 0 0 1px rgba(9, 230, 255, 0.05);
-    }
-
-    .cyber-skill-icon-soft {
-        border-color: rgba(126, 249, 255, 0.22);
-        background:
-            radial-gradient(circle at 28% 24%, rgba(126, 249, 255, 0.24), transparent 58%),
-            linear-gradient(180deg, rgba(223, 244, 255, 0.18) 0%, rgba(125, 173, 216, 0.12) 100%);
+        border: 1px solid rgba(126, 249, 255, 0.45);
+        background: radial-gradient(circle at 30% 22%, #ffffff 0%, #eaf3fc 55%, #d3e3f3 100%);
         box-shadow:
-            inset 0 0 0 1px rgba(255, 255, 255, 0.12),
-            0 0 22px rgba(126, 249, 255, 0.1);
+            inset 0 0 0 1px rgba(255, 255, 255, 0.6),
+            0 0 0 3px rgba(9, 230, 255, 0.07),
+            0 0 18px rgba(9, 230, 255, 0.16);
     }
 
     .cyber-skill-image {
-        filter: drop-shadow(0 0 14px rgba(9, 230, 255, 0.12));
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
     }
 
     .cyber-divider {
