@@ -22,15 +22,16 @@ docker compose up -d
 
 The app will be available at `http://localhost:8080`.
 
-Local Docker now uses a bind mount for the whole project, so PHP/Laravel changes are visible inside the container immediately without rebuilding the image on every restart.
+Local Docker bind-mounts the source directories (`app`, `config`, `resources`, `routes`, …), so PHP/Laravel and Blade changes are visible inside the container immediately without rebuilding the image. `docker/php/php.local.ini` re-enables opcache timestamp checks for this.
+
+`vendor/` is deliberately **not** mounted: it comes from the image, because every file access through a Docker for Windows bind mount costs about a millisecond and a page render touches hundreds of vendor files. For the same reason the container has no dev dependencies — run tests on the host.
 
 The local stack also starts a Vite dev server on `http://localhost:5173`, so changes in Blade, CSS, and JS are picked up without rebuilding `public/build`.
 
-Rebuild only when the container image itself must change, for example after updating:
+Rebuild when the container image itself must change, for example after updating:
 
+- `composer.json` / `composer.lock`
 - the `Dockerfile` or files under `docker/`
-
-If PHP dependencies change, update local `vendor/` as usual and the app container will see them through the bind mount.
 
 Then run:
 

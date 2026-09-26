@@ -1,6 +1,8 @@
-@import 'tailwindcss';
+/* Auto-detection walks the whole project, which is very slow on a Docker bind mount; scan only what uses classes. */
+@import 'tailwindcss' source(none);
 
 @source "../views";
+@source "../js";
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 
 @custom-variant dark (&:where(.dark, .dark *));

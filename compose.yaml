@@ -8,8 +8,19 @@ services:
       - .env.docker
     ports:
       - "8080:8080"
+    # Only source directories are bind-mounted: vendor comes from the image, since every file access through a
+    # Docker for Windows bind mount costs ~1ms. Rebuild the image after changing composer dependencies.
     volumes:
-      - .:/var/www/html
+      - ./app:/var/www/html/app
+      - ./bootstrap/app.php:/var/www/html/bootstrap/app.php
+      - ./bootstrap/providers.php:/var/www/html/bootstrap/providers.php
+      - ./config:/var/www/html/config
+      - ./database:/var/www/html/database
+      - ./lang:/var/www/html/lang
+      - ./public:/var/www/html/public
+      - ./resources:/var/www/html/resources
+      - ./routes:/var/www/html/routes
+      - ./docker/php/php.local.ini:/usr/local/etc/php/conf.d/zzz-local.ini:ro
       - app_storage:/var/www/html/storage
       - app_cache:/var/www/html/bootstrap/cache
     restart: unless-stopped

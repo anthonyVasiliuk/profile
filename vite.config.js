@@ -22,7 +22,11 @@ export default defineConfig({
         strictPort: true,
         https: process.env.NODE_ENV === 'production',
         watch: {
+            // Polling is needed on Docker for Windows bind mounts, where every stat is slow: poll less often and skip
+            // directories that never hold frontend sources.
             usePolling: process.env.CHOKIDAR_USEPOLLING === 'true',
+            interval: 1000,
+            ignored: ['**/vendor/**', '**/storage/**', '**/bootstrap/cache/**', '**/public/build/**', '**/public/vendor/**', '**/.vite/**'],
         },
     },
 });

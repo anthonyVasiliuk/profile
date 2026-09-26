@@ -17,6 +17,21 @@ return [
 
     /*
     |---------------------------------------------------------------------------
+    | Component Locations
+    |---------------------------------------------------------------------------
+    |
+    | Directories Livewire searches for single/multi-file components. Livewire
+    | probes dozens of file names per location on every render, so only the
+    | directory that actually holds components is listed.
+    |
+    */
+
+    'component_locations' => [
+        resource_path('views/livewire'),
+    ],
+
+    /*
+    |---------------------------------------------------------------------------
     | View Path
     |---------------------------------------------------------------------------
     |
