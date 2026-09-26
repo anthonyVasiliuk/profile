@@ -23,14 +23,14 @@ new class extends Component {
         'astry_signal_text' => $isRu
             ? 'Здесь видны оплата, контентная модель, AI-слой и двуязычная структура. Это рабочий сервис, а не декоративный лендинг.'
             : 'This one shows payments, a real content model, an AI layer, and bilingual structure. It behaves like a product, not a decorative landing page.',
-        'instiles_label' => $isRu ? 'Independent storefront project' : 'Independent storefront project',
+        'instiles_label' => $isRu ? 'Планировщик сетки Instagram' : 'Instagram grid planner',
         'instiles_text' => $isRu
-            ? 'Instiles.online — витринный ecommerce-проект, где я собираю каталог, экранную логику и путь пользователя от первого блока до заявки.'
-            : 'Instiles.online is a storefront-style ecommerce project where I shape the catalog, screen logic, and the user path from first block to inquiry.',
+            ? 'Instiles.online — браузерный редактор связанных Instagram-раскладок от 1x3 до 4x3. Он разделяет общую композицию и контент отдельных плиток, показывает реальный вид профиля с обрезкой миниатюр и зазорами и выгружает посты в порядке публикации. Я спроектировал и собрал редактор, логику экспорта и двуязычный сайт.'
+            : 'Instiles.online is a browser editor for connected Instagram layouts from 1x3 to 4x3. It separates the shared composition from per-tile content, previews the real profile with thumbnail crops and gaps, and exports posts in publishing order. I designed and built the editor, the export logic, and the bilingual site.',
         'instiles_signal' => $isRu ? 'Что здесь ценно' : 'Why it matters',
         'instiles_signal_text' => $isRu
-            ? 'Показывает, что я думаю не только про backend, но и про то, как продукт объясняет ассортимент и доводит пользователя до действия.'
-            : 'It shows that I care not only about backend logic, but also about how a product explains the catalog and leads the user to action.',
+            ? 'Сложность не в нарезке картинки, а в моделировании того, что реально показывает Instagram: обрезки миниатюр, стыков между плитками и порядка публикации. Это продуктовая логика вокруг реального экрана пользователя, а не простой сплиттер.'
+            : 'The hard part is not cutting an image but modelling what Instagram actually shows: thumbnail crops, seams between tiles, and publishing order. It is product logic built around the surface users really see, not a simple splitter.',
         'visit' => $isRu ? 'Открыть проект' : 'Open project',
         'stack' => $isRu ? 'Фокус' : 'Focus',
     ];
