@@ -101,15 +101,15 @@ new class extends Component {
         </div>
 
         <div class="relative flex lg:h-full lg:pl-4">
-            <div class="absolute -inset-6 rounded-[2rem] blur-3xl" style="background: radial-gradient(circle at center, rgba(9, 230, 255, 0.1), rgba(255, 56, 209, 0.06), transparent 72%);"></div>
+            <div class="absolute -inset-6 hidden rounded-[2rem] blur-3xl sm:block" style="background: radial-gradient(circle at center, rgba(9, 230, 255, 0.1), rgba(255, 56, 209, 0.06), transparent 72%);"></div>
 
-            <div class="cyber-window relative flex h-full w-full flex-col overflow-hidden rounded-[1.8rem] p-5">
-                <div class="relative flex items-center justify-between border-b pb-4 text-[11px] uppercase tracking-[0.26em]" style="border-color: var(--line); color: var(--accent);">
+            <div class="cyber-window mobile-flat relative flex h-full w-full flex-col overflow-hidden rounded-[1.8rem] p-5">
+                <div class="relative hidden items-center justify-between border-b pb-4 sm:flex text-[11px] uppercase tracking-[0.26em]" style="border-color: var(--line); color: var(--accent);">
                     <span>{{ $heroUi['overview'] }}</span>
                     <span>{{ $heroUi['mode'] }}</span>
                 </div>
 
-                <div class="relative mt-5 flex-1">
+                <div class="relative mt-5 hidden flex-1 sm:block">
                     <div class="grid h-full gap-4 lg:grid-cols-[1.08fr_0.92fr]">
                     <div
                         class="cyber-city h-full min-h-[22rem] rounded-[1.4rem] bg-cover bg-center p-5"
@@ -178,16 +178,16 @@ new class extends Component {
                 </div>
                 </div>
 
-                <div class="relative mt-4 grid gap-3 sm:grid-cols-3">
-                    <div class="cyber-hero-stat theme-card-interactive rounded-[1rem] border p-4">
+                <div class="relative grid gap-4 sm:mt-4 sm:grid-cols-3 sm:gap-3">
+                    <div class="cyber-hero-stat theme-card-interactive mobile-soft rounded-[1rem] border p-4">
                         <p class="text-sm font-semibold text-[var(--accent-strong)]">{{ __('global.hero_stats_years', ['years' => $profileExperienceYears]) }}</p>
                         <p class="theme-copy mt-2 text-sm leading-6">{{ __('global.hero_stats_years_label') }}</p>
                     </div>
-                    <div class="cyber-hero-stat theme-card-interactive rounded-[1rem] border p-4">
+                    <div class="cyber-hero-stat theme-card-interactive mobile-soft rounded-[1rem] border p-4">
                         <p class="text-sm font-semibold text-[var(--accent-strong)]">{{ __('global.hero_stats_backend') }}</p>
                         <p class="theme-copy mt-2 text-sm leading-6">{{ __('global.hero_stats_backend_label') }}</p>
                     </div>
-                    <div class="cyber-hero-stat theme-card-interactive rounded-[1rem] border p-4">
+                    <div class="cyber-hero-stat theme-card-interactive mobile-soft rounded-[1rem] border p-4">
                         <p class="text-sm font-semibold text-[var(--accent-strong)]">{{ __('global.hero_stats_delivery') }}</p>
                         <p class="theme-copy mt-2 text-sm leading-6">{{ __('global.hero_stats_delivery_label') }}</p>
                     </div>

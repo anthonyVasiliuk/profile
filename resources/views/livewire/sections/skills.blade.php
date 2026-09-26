@@ -81,14 +81,14 @@ new class extends Component {
     ];
 @endphp
 
-<section id="skills" class="cyber-section cyber-section-skills relative overflow-hidden bg-[var(--page-bg)] py-24 text-[var(--heading)] lg:py-28">
+<section id="skills" class="cyber-section cyber-section-skills relative overflow-hidden bg-[var(--page-bg)] py-16 text-[var(--heading)] sm:py-24 lg:py-28">
     <div class="absolute inset-0 -z-10" style="background-image: var(--skills-bg);"></div>
-    <div class="mx-auto max-w-7xl px-6">
-        <div class="grid gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:items-stretch">
-            <div class="cyber-dossier flex h-full flex-col rounded-[1.9rem] p-8 sm:p-10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <div class="grid gap-10 sm:gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:items-stretch">
+            <div class="cyber-dossier mobile-flat flex flex-col rounded-[1.9rem] p-8 sm:p-10 lg:self-start">
                 <div class="flex items-center justify-between gap-4">
                     <p class="theme-kicker">{{ __('global.skills') }}</p>
-                    <p class="cyber-log text-[11px]">scan://core-stack</p>
+                    <p class="cyber-log hidden text-[11px] sm:block">scan://core-stack</p>
                 </div>
                 <h2 class="theme-display theme-title mt-5 text-3xl font-semibold tracking-tight sm:text-[2.85rem]">
                     {{ __('global.skills_heading') }}
@@ -98,24 +98,24 @@ new class extends Component {
                 </p>
                 <div class="cyber-divider mt-8"></div>
                 <div class="mt-6 space-y-4">
-                    <div class="cyber-stat rounded-[1rem] p-4">
+                    <div class="cyber-stat mobile-soft rounded-[1rem] p-4">
                         <p class="cyber-panel-title">{{ $skillsUi['backend'] }}</p>
                         <p class="theme-copy mt-2 text-sm leading-6">{{ $skillsUi['backend_text'] }}</p>
                     </div>
-                    <div class="cyber-stat rounded-[1rem] p-4">
+                    <div class="cyber-stat mobile-soft rounded-[1rem] p-4">
                         <p class="cyber-panel-title">{{ $skillsUi['adjacent'] }}</p>
                         <p class="theme-copy mt-2 text-sm leading-6">{{ $skillsUi['adjacent_text'] }}</p>
                     </div>
                 </div>
             </div>
 
-            <div class="grid h-full auto-rows-fr gap-8">
-                <div class="flex h-full flex-col rounded-[1.9rem] border p-6 sm:p-7" style="border-color: rgba(9, 230, 255, 0.16); background: linear-gradient(180deg, rgba(12, 24, 44, 0.78) 0%, rgba(9, 18, 33, 0.82) 100%);">
+            <div class="grid h-full gap-10 sm:auto-rows-fr sm:gap-8">
+                <div class="cyber-matrix-panel mobile-flat flex h-full flex-col rounded-[1.9rem] p-6 sm:p-7">
                     <div class="mb-5 flex items-center justify-between gap-4">
                         <p class="cyber-panel-title">{{ $skillsUi['core_matrix'] }}</p>
-                        <p class="cyber-log text-[11px]">status://active</p>
+                        <p class="cyber-log hidden text-[11px] sm:block">status://active</p>
                     </div>
-                    <div class="grid gap-4 sm:grid-cols-2 2xl:grid-cols-3">
+                    <div class="grid grid-cols-2 gap-3 sm:gap-4 2xl:grid-cols-3">
                         @foreach ($primarySkills as $skill)
                             <div class="theme-card theme-card-interactive cyber-skill-card rounded-[1.25rem] p-4 sm:min-h-[5.75rem]">
                                 <div class="flex items-center gap-4">
@@ -132,14 +132,14 @@ new class extends Component {
                     </div>
                 </div>
 
-                <div class="flex h-full flex-col rounded-[1.9rem] border p-6 sm:p-7" style="border-color: rgba(126, 87, 255, 0.18); background: linear-gradient(180deg, rgba(12, 23, 42, 0.76) 0%, rgba(8, 17, 31, 0.8) 100%);">
+                <div class="cyber-matrix-panel cyber-matrix-panel-violet mobile-flat flex h-full flex-col rounded-[1.9rem] p-6 sm:p-7">
                     <div class="mb-5 flex items-center justify-between gap-4">
                         <h3 class="theme-display theme-title text-2xl font-semibold">
                             {{ __('global.additional_skills') }}
                         </h3>
-                        <p class="cyber-log text-[11px]">modules://adjacent</p>
+                        <p class="cyber-log hidden text-[11px] sm:block">modules://adjacent</p>
                     </div>
-                    <div class="grid gap-3 sm:grid-cols-2 2xl:grid-cols-3">
+                    <div class="grid grid-cols-2 gap-3 2xl:grid-cols-3">
                         @foreach ($additionalSkills as $skill)
                             <div class="theme-card theme-card-interactive cyber-skill-card flex min-h-[3.9rem] items-center gap-3 rounded-[1rem] p-3">
                                 <div class="cyber-skill-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-[0.85rem] p-1.5">

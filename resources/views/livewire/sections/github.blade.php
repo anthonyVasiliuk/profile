@@ -23,13 +23,13 @@ new class extends Component {
 @endphp
 
 <section id="github" class="cyber-section cyber-section-github relative overflow-hidden bg-[var(--page-bg)] py-16 text-[var(--heading)] lg:py-20">
-    <div class="mx-auto max-w-7xl px-6">
-        <div class="cyber-dossier rounded-[1.9rem] p-5 sm:p-6 lg:p-7">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <div class="cyber-dossier mobile-flat rounded-[1.9rem] p-5 sm:p-6 lg:p-7">
             <div class="lg:pl-4">
                 <div class="max-w-[72rem]">
                     <div class="flex flex-wrap items-center gap-3">
                         <p class="theme-kicker">{{ $githubUi['kicker'] }}</p>
-                        <p class="cyber-log text-[11px]">github://{{ $githubUsername }}</p>
+                        <p class="cyber-log hidden text-[11px] sm:block">github://{{ $githubUsername }}</p>
                     </div>
 
                     <div class="mt-5 grid gap-6 lg:grid-cols-[minmax(24rem,27rem)_minmax(0,1fr)] lg:items-center lg:gap-10">
@@ -61,8 +61,8 @@ new class extends Component {
                             </div>
                         </div>
 
-                        <div>
-                            <h2 class="theme-display theme-title max-w-[14ch] text-4xl font-semibold tracking-tight sm:text-[3.1rem] lg:text-[3.65rem]">
+                        <div class="order-first lg:order-none">
+                            <h2 class="theme-display theme-title max-w-[14ch] text-3xl font-semibold tracking-tight sm:text-[3.1rem] lg:text-[3.65rem]">
                                 {{ $githubUi['heading'] }}
                             </h2>
                             <p class="theme-lead mt-3 max-w-[36ch] text-[1rem] leading-7 sm:text-[1.06rem]">

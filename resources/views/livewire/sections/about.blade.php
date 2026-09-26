@@ -33,26 +33,21 @@ new class extends Component {
     ];
 @endphp
 
-<section id="about" class="cyber-section cyber-section-about relative bg-[var(--page-bg-alt)] py-24 lg:py-28">
-    <div class="mx-auto max-w-7xl px-6">
-        <div class="cyber-about-shell rounded-[2rem] p-4 sm:p-5">
-            <div
-                class="cyber-about-stage rounded-[1.7rem] p-6 sm:p-8 lg:p-10"
-                style="background-image:
-                    linear-gradient(180deg, rgba(5, 12, 24, 0.82) 0%, rgba(5, 12, 24, 0.94) 92%),
-                    linear-gradient(90deg, rgba(4, 14, 28, 0.92) 0%, rgba(6, 17, 32, 0.78) 34%, rgba(8, 18, 34, 0.62) 58%, rgba(19, 9, 35, 0.76) 100%);"
-            >
-                <div class="grid min-h-[35rem] gap-6 lg:grid-cols-[minmax(0,1.18fr)_minmax(19rem,24rem)]">
+<section id="about" class="cyber-section cyber-section-about relative bg-[var(--page-bg-alt)] py-16 sm:py-24 lg:py-28">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <div class="cyber-about-shell mobile-flat rounded-[2rem] p-4 sm:p-5">
+            <div class="cyber-about-stage mobile-flat rounded-[1.7rem] p-6 sm:p-8 lg:p-10">
+                <div class="grid gap-10 sm:gap-6 lg:min-h-[35rem] lg:grid-cols-[minmax(0,1.18fr)_minmax(19rem,24rem)]">
                     <div class="relative z-10 flex flex-col">
                         <div class="flex flex-wrap items-center justify-between gap-4">
                             <p class="theme-kicker">{{ __('global.about_me') }}</p>
                             <div class="flex flex-wrap items-center gap-3">
                                 <span class="cyber-chip inline-flex rounded-full px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em]">{{ $aboutUi['workspace_tag'] }}</span>
-                                <p class="cyber-log text-[11px]">overview://backend-operator</p>
+                                <p class="cyber-log hidden text-[11px] sm:block">overview://backend-operator</p>
                             </div>
                         </div>
 
-                        <div class="mt-8 max-w-3xl">
+                        <div class="mt-6 max-w-3xl sm:mt-8">
                             <p class="cyber-log text-xs sm:text-sm">{{ $aboutUi['control_room'] }}</p>
                             <h2 class="theme-display theme-title mt-4 max-w-2xl text-3xl font-semibold tracking-tight sm:text-[2.9rem]">
                                 {{ __('global.position') }}
@@ -63,11 +58,11 @@ new class extends Component {
                         </div>
 
                         <div class="mt-8 grid gap-4 xl:max-w-3xl xl:grid-cols-2">
-                            <div class="cyber-about-note rounded-[1.25rem] p-5">
+                            <div class="cyber-about-note mobile-soft rounded-[1.25rem] p-5">
                                 <p class="cyber-panel-title">{{ $aboutUi['primary_value'] }}</p>
                                 <p class="theme-copy mt-3 text-sm leading-7">{{ $aboutUi['primary_value_text'] }}</p>
                             </div>
-                            <div class="cyber-about-note rounded-[1.25rem] p-5">
+                            <div class="cyber-about-note mobile-soft rounded-[1.25rem] p-5">
                                 <p class="cyber-panel-title">{{ $aboutUi['working_style'] }}</p>
                                 <p class="theme-copy mt-3 text-sm leading-7">{{ $aboutUi['working_style_text'] }}</p>
                             </div>
@@ -94,12 +89,12 @@ new class extends Component {
                     <aside class="cyber-about-aside relative z-10 rounded-[1.5rem] p-6 sm:p-7">
                         <div class="flex items-center justify-between gap-4">
                             <p class="theme-kicker">{{ __('global.education') }}</p>
-                            <p class="cyber-log text-[11px]">record://brest-state-tech</p>
+                            <p class="cyber-log hidden text-[11px] sm:block">record://brest-state-tech</p>
                         </div>
 
-                        <div class="relative mt-7">
-                            <p class="cyber-log text-[11px]">degree://systems-engineering</p>
-                            <h3 class="theme-display theme-title mt-4 text-2xl font-semibold sm:text-[2.15rem]">
+                        <div class="relative mt-5 sm:mt-7">
+                            <p class="cyber-log hidden text-[11px] sm:block">degree://systems-engineering</p>
+                            <h3 class="theme-display theme-title sm:mt-4 text-2xl font-semibold sm:text-[2.15rem]">
                                 {{ $aboutUi['systems_engineering'] }}
                             </h3>
                             <p class="theme-meta mt-3 text-sm leading-7">
@@ -109,7 +104,7 @@ new class extends Component {
 
                         <div class="cyber-divider mt-6"></div>
 
-                        <div class="mt-6 space-y-3">
+                        <div class="mt-2 sm:mt-6 sm:space-y-3">
                             <div class="cyber-about-meta-row">
                                 <span class="cyber-log text-[11px]">{{ $aboutUi['period_label'] }}</span>
                                 <span class="theme-copy text-sm font-medium">2010-2015</span>

@@ -51,8 +51,8 @@ new class extends Component {
     ];
 @endphp
 
-<section id="experience" class="cyber-section cyber-section-experience bg-[var(--page-bg-alt)] py-24 lg:py-28">
-    <div class="mx-auto max-w-7xl px-6">
+<section id="experience" class="cyber-section cyber-section-experience bg-[var(--page-bg-alt)] py-16 sm:py-24 lg:py-28">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
         <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div class="max-w-3xl">
                 <p class="theme-kicker">{{ __('global.experience') }}</p>
@@ -66,13 +66,13 @@ new class extends Component {
             </div>
         </div>
 
-        <div class="cyber-timeline relative mt-12 space-y-8">
+        <div class="cyber-timeline relative mt-10 space-y-6 sm:mt-12 sm:space-y-8">
 
-            <article class="cyber-dossier cyber-timeline-card relative rounded-[1.9rem] p-8 sm:p-10">
+            <article class="cyber-dossier cyber-timeline-card relative rounded-[1.5rem] p-5 sm:rounded-[1.9rem] sm:p-10">
                 <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                     <div>
-                        <h3 class="theme-display theme-title text-2xl font-semibold">{{ $currentProduct['company'] }}</h3>
-                        <p class="theme-copy mt-2 text-lg font-medium">{{ $currentProduct['role'] }}</p>
+                        <h3 class="theme-display theme-title text-xl font-semibold sm:text-2xl">{{ $currentProduct['company'] }}</h3>
+                        <p class="theme-copy mt-2 text-base font-medium sm:text-lg">{{ $currentProduct['role'] }}</p>
                     </div>
                     <div class="flex flex-wrap items-center gap-3">
                         <span class="cyber-pill-muted inline-flex items-center rounded-[0.8rem] px-3 py-2 text-xs font-medium uppercase tracking-[0.16em]">
@@ -86,12 +86,12 @@ new class extends Component {
 
                 <p class="theme-meta mt-5 max-w-4xl text-base leading-8">{{ $currentProduct['summary'] }}</p>
 
-                <div class="mt-8">
-                    <div class="mb-5 flex items-center justify-between gap-4">
+                <div class="mt-6 sm:mt-8">
+                    <div class="mb-4 flex sm:mb-5 items-center justify-between gap-4">
                         <p class="theme-kicker">{{ $currentProduct['case_title'] }}</p>
-                        <p class="cyber-log text-[11px]">{{ $currentProduct['log'] }}</p>
+                        <p class="cyber-log hidden text-[11px] sm:block">{{ $currentProduct['log'] }}</p>
                     </div>
-                    <div class="cyber-panel-grid grid gap-4 lg:grid-cols-3">
+                    <div class="cyber-panel-grid grid gap-5 sm:gap-4 lg:grid-cols-3">
                         @foreach ($currentProduct['cards'] as $card)
                             <div class="theme-card-muted theme-card-interactive cyber-panel-card rounded-[1.3rem] p-5">
                                 <h3 class="theme-title text-lg font-semibold">{{ $card['title'] }}</h3>
@@ -102,10 +102,10 @@ new class extends Component {
                 </div>
             </article>
 
-            <article class="cyber-dossier cyber-timeline-card relative rounded-[1.9rem] p-8 sm:p-10">
+            <article class="cyber-dossier cyber-timeline-card relative rounded-[1.5rem] p-5 sm:rounded-[1.9rem] sm:p-10">
                 <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                     <div>
-                        <a href="https://northitgroup.com/en/portfolio" target="_blank" rel="noopener noreferrer" class="theme-display theme-link-strong group inline-flex items-center gap-2 text-2xl font-semibold">
+                        <a href="https://northitgroup.com/en/portfolio" target="_blank" rel="noopener noreferrer" class="theme-display theme-link-strong group inline-flex items-center gap-2 text-xl font-semibold sm:text-2xl">
                             <span>{{ __('global.company_northitgroup') }}</span>
                             <livewire:socials.link-icon />
                         </a>
@@ -123,10 +123,10 @@ new class extends Component {
 
                 <p class="theme-meta mt-5 max-w-4xl text-base leading-8">{{ __('global.experience_companies.nitg') }}</p>
 
-                <div class="mt-8">
-                    <div class="mb-5 flex items-center justify-between gap-4">
+                <div class="mt-6 sm:mt-8">
+                    <div class="mb-4 flex sm:mb-5 items-center justify-between gap-4">
                         <p class="theme-kicker">{{ __('global.selected_projects') }}</p>
-                        <p class="cyber-log text-[11px]">portfolio://northitgroup</p>
+                        <p class="cyber-log hidden text-[11px] sm:block">portfolio://northitgroup</p>
                     </div>
                     <div class="cyber-panel-grid grid gap-4 lg:grid-cols-3">
                         <div class="theme-card-muted theme-card-interactive cyber-panel-card rounded-[1.3rem] p-5">
@@ -152,7 +152,7 @@ new class extends Component {
                 </div>
             </article>
 
-            <article class="cyber-dossier cyber-timeline-card relative rounded-[1.9rem] p-8 sm:p-10">
+            <article class="cyber-dossier cyber-timeline-card relative rounded-[1.5rem] p-5 sm:rounded-[1.9rem] sm:p-10">
                 <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                     <div>
                         <h3 class="theme-display theme-title text-2xl font-semibold">{{ __('global.company_sportdata') }}</h3>
@@ -170,16 +170,16 @@ new class extends Component {
 
                 <p class="theme-meta mt-5 text-base leading-8">{{ __('global.experience_companies.sportdata') }}</p>
 
-                <div class="theme-card-muted theme-card-interactive cyber-panel-card mt-6 rounded-[1.3rem] p-5">
+                <div class="theme-card-muted theme-card-interactive cyber-panel-card mobile-soft mt-6 rounded-[1.3rem] p-5">
                     <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                         <p class="theme-kicker text-[13px] tracking-[0.18em]">{{ __('global.domain_gambling') }}</p>
-                        <p class="cyber-log text-[11px]">domain://gambling</p>
+                        <p class="cyber-log hidden text-[11px] sm:block">domain://gambling</p>
                     </div>
                     <p class="theme-meta mt-3 text-[15px] leading-7">{{ __('global.sportdata') }}</p>
                 </div>
             </article>
 
-            <article class="cyber-dossier cyber-timeline-card relative rounded-[1.9rem] p-8 sm:p-10">
+            <article class="cyber-dossier cyber-timeline-card relative rounded-[1.5rem] p-5 sm:rounded-[1.9rem] sm:p-10">
                 <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                     <div>
                         <h3 class="theme-display theme-title text-2xl font-semibold">{{ __('global.company_webit') }}</h3>
@@ -197,10 +197,10 @@ new class extends Component {
 
                 <p class="theme-meta mt-5 text-base leading-8">{{ __('global.experience_companies.webit') }}</p>
 
-                <div class="theme-card-muted theme-card-interactive cyber-panel-card mt-6 rounded-[1.3rem] p-5">
+                <div class="theme-card-muted theme-card-interactive cyber-panel-card mobile-soft mt-6 rounded-[1.3rem] p-5">
                     <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                         <p class="theme-kicker text-[13px] tracking-[0.18em]">{{ __('global.domain_travel') }}</p>
-                        <p class="cyber-log text-[11px]">domain://travel</p>
+                        <p class="cyber-log hidden text-[11px] sm:block">domain://travel</p>
                     </div>
                     <p class="theme-meta mt-3 text-[15px] leading-7">{{ __('global.webit') }}</p>
                 </div>

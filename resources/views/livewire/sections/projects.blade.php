@@ -62,7 +62,7 @@ new class extends Component {
     ];
 @endphp
 
-<section id="projects" class="cyber-section cyber-section-projects relative overflow-hidden bg-[var(--page-bg-alt)] py-24 lg:py-28">
+<section id="projects" class="cyber-section cyber-section-projects relative overflow-hidden bg-[var(--page-bg-alt)] py-16 sm:py-24 lg:py-28">
     <div class="absolute inset-0 -z-10" style="background-image: radial-gradient(circle at 15% 22%, rgba(9, 230, 255, 0.05), transparent 24%), radial-gradient(circle at 82% 18%, rgba(126, 87, 255, 0.07), transparent 28%);"></div>
     <div class="mx-auto max-w-7xl px-6">
         <div class="rounded-[1.95rem] border p-8 sm:p-10" style="border-color: rgba(9, 230, 255, 0.14); background: linear-gradient(180deg, rgba(11, 22, 41, 0.62) 0%, rgba(8, 16, 30, 0.68) 100%); box-shadow: 0 18px 58px rgba(2, 6, 23, 0.2);">
@@ -99,7 +99,7 @@ new class extends Component {
                 @foreach ($products as $product)
                     <article class="theme-card-muted theme-card-interactive rounded-[1.7rem] p-6 sm:p-7">
                         <div class="flex items-start justify-between gap-4">
-                            <div>
+                            <div class="min-w-0">
                                 <p class="theme-kicker">{{ $product['label'] }}</p>
                                 <h3 class="theme-display theme-title mt-3 text-2xl font-semibold">
                                     <a href="{{ $product['url'] }}" target="_blank" rel="noopener noreferrer" class="theme-link-strong inline-flex items-center gap-2">
@@ -108,7 +108,7 @@ new class extends Component {
                                     </a>
                                 </h3>
                             </div>
-                            <p class="cyber-log text-[11px]">{{ $product['log'] }}</p>
+                            <p class="cyber-log hidden text-[11px] sm:block">{{ $product['log'] }}</p>
                         </div>
 
                         <p class="theme-copy mt-5 text-[15px] leading-8">
@@ -121,7 +121,7 @@ new class extends Component {
                             @endforeach
                         </div>
 
-                        <div class="mt-6 rounded-[1.1rem] border p-4" style="border-color: rgba(9, 230, 255, 0.12); background: linear-gradient(180deg, rgba(9, 18, 34, 0.7) 0%, rgba(7, 13, 25, 0.76) 100%);">
+                        <div class="cyber-signal-box mobile-soft mt-6 rounded-[1.1rem] p-4">
                             <p class="cyber-panel-title">{{ $product['signal_title'] }}</p>
                             <p class="theme-copy mt-2 text-sm leading-7">{{ $product['signal_text'] }}</p>
                         </div>

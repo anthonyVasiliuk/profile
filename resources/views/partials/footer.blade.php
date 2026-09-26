@@ -16,8 +16,8 @@
     <div class="absolute left-[-7rem] top-16 -z-10 h-48 w-48 rounded-full blur-3xl" style="background: rgba(9, 230, 255, 0.12);"></div>
     <div class="absolute right-[-6rem] top-10 -z-10 h-56 w-56 rounded-full blur-3xl" style="background: rgba(255, 56, 209, 0.1);"></div>
     <div class="absolute inset-x-[18%] bottom-0 -z-10 h-32 blur-3xl" style="background: radial-gradient(circle at center, rgba(125, 89, 255, 0.18), transparent 70%);"></div>
-    <div class="mx-auto max-w-7xl px-6 py-14">
-        <div class="rounded-[1.8rem] border p-8 sm:p-10" style="border-color: rgba(9, 230, 255, 0.14); background: linear-gradient(180deg, rgba(11, 22, 41, 0.54) 0%, rgba(8, 16, 30, 0.62) 100%); box-shadow: 0 18px 58px rgba(2, 6, 23, 0.16);">
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14">
+        <div class="cyber-panel-shell cyber-panel-shell-soft mobile-flat rounded-[1.8rem] p-8 sm:p-10">
             <div class="cyber-footer-grid grid gap-10 xl:grid-cols-[1.18fr_0.72fr_0.72fr]">
                 <div class="space-y-5">
                     <div>
