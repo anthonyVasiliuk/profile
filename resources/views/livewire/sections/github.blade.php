@@ -19,6 +19,7 @@ new class extends Component {
             ? 'Карта GitHub показывает ритм работы с кодом и даёт быстрый внешний сигнал по активности профиля.'
             : 'The GitHub chart shows coding rhythm and gives a quick external signal of profile activity.',
         'profile_label' => $isRu ? 'GitHub профиль' : 'GitHub profile',
+        'chart_hint' => $isRu ? 'Последние месяцы. Полная карта — в профиле GitHub' : 'Recent months. The full map is on the GitHub profile',
     ];
 @endphp
 
@@ -83,6 +84,9 @@ new class extends Component {
                     height="104"
                 >
             </div>
+            <a href="{{ $githubProfileUrl }}" target="_blank" rel="noopener noreferrer" class="theme-meta theme-link mt-3 inline-flex text-xs sm:hidden">
+                {{ $githubUi['chart_hint'] }} →
+            </a>
         </div>
     </div>
 </section>
