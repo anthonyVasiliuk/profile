@@ -1,4 +1,4 @@
-<a href="https://github.com/anthonyVasiliuk/" target="_blank" rel="noopener noreferrer" class="theme-social-link">
+<a href="https://github.com/anthonyVasiliuk/" target="_blank" rel="noopener noreferrer" class="theme-social-link" aria-label="GitHub">
     <span class="[&>svg]:h-5 [&>svg]:w-5">
     <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -84,7 +84,7 @@ new class extends Component {
                     </div>
                 </div>
 
-                <p class="theme-meta mt-5 max-w-4xl text-base leading-8">{{ $currentProduct['summary'] }}</p>
+                <p class="theme-meta mt-4 max-w-[75ch] text-[15px] leading-7 sm:mt-5 sm:text-base sm:leading-8">{{ $currentProduct['summary'] }}</p>
 
                 <div class="mt-6 sm:mt-8">
                     <div class="mb-4 flex sm:mb-5 items-center justify-between gap-4">
@@ -93,8 +93,8 @@ new class extends Component {
                     </div>
                     <div class="cyber-panel-grid grid gap-5 sm:gap-4 lg:grid-cols-3">
                         @foreach ($currentProduct['cards'] as $card)
-                            <div class="theme-card-muted theme-card-interactive cyber-panel-card rounded-[1.3rem] p-5">
-                                <h3 class="theme-title text-lg font-semibold">{{ $card['title'] }}</h3>
+                            <div class="theme-card-muted theme-card-interactive cyber-panel-card mobile-soft rounded-[1.3rem] p-5">
+                                <h4 class="theme-title text-lg font-semibold">{{ $card['title'] }}</h4>
                                 <p class="theme-meta mt-3 text-[15px] leading-7">{{ $card['text'] }}</p>
                             </div>
                         @endforeach
@@ -121,30 +121,30 @@ new class extends Component {
                     </div>
                 </div>
 
-                <p class="theme-meta mt-5 max-w-4xl text-base leading-8">{{ __('global.experience_companies.nitg') }}</p>
+                <p class="theme-meta mt-4 max-w-[75ch] text-[15px] leading-7 sm:mt-5 sm:text-base sm:leading-8">{{ __('global.experience_companies.nitg') }}</p>
 
                 <div class="mt-6 sm:mt-8">
                     <div class="mb-4 flex sm:mb-5 items-center justify-between gap-4">
                         <p class="theme-kicker">{{ __('global.selected_projects') }}</p>
                         <p class="cyber-log hidden text-[11px] sm:block">portfolio://northitgroup</p>
                     </div>
-                    <div class="cyber-panel-grid grid gap-4 lg:grid-cols-3">
-                        <div class="theme-card-muted theme-card-interactive cyber-panel-card rounded-[1.3rem] p-5">
-                            <h3 class="theme-title text-lg font-semibold">
+                    <div class="cyber-panel-grid grid gap-5 sm:gap-4 lg:grid-cols-3">
+                        <div class="theme-card-muted theme-card-interactive cyber-panel-card mobile-soft rounded-[1.3rem] p-5">
+                            <h4 class="theme-title text-lg font-semibold">
                                 <a href="https://warehouseplus.de" target="_blank" rel="noopener noreferrer" class="theme-link-strong">Warehouseplus</a>
-                            </h3>
+                            </h4>
                             <p class="theme-meta mt-3 text-[15px] leading-7">{{ __('global.warehouseplus') }}</p>
                         </div>
-                        <div class="theme-card-muted theme-card-interactive cyber-panel-card rounded-[1.3rem] p-5">
-                            <h3 class="theme-title text-lg font-semibold">
+                        <div class="theme-card-muted theme-card-interactive cyber-panel-card mobile-soft rounded-[1.3rem] p-5">
+                            <h4 class="theme-title text-lg font-semibold">
                                 <a href="https://northitgroup.com/en/knowledge/101-%7B%22en%22:%22php-laravel-angular-team-north-it-group-gmbh%22,%22de%22:%22php-laravel-angular-team-north-it-group-gmbh%22%7D" target="_blank" rel="noopener noreferrer" class="theme-link-strong">Yupinion</a>
-                            </h3>
+                            </h4>
                             <p class="theme-meta mt-3 text-[15px] leading-7">{{ __('global.yupinion') }}</p>
                         </div>
-                        <div class="theme-card-muted theme-card-interactive cyber-panel-card rounded-[1.3rem] p-5">
-                            <h3 class="theme-title text-lg font-semibold">
+                        <div class="theme-card-muted theme-card-interactive cyber-panel-card mobile-soft rounded-[1.3rem] p-5">
+                            <h4 class="theme-title text-lg font-semibold">
                                 <a href="https://adandra.net" target="_blank" rel="noopener noreferrer" class="theme-link-strong">Adandra</a>
-                            </h3>
+                            </h4>
                             <p class="theme-meta mt-3 text-[15px] leading-7">{{ __('global.adandra') }}</p>
                         </div>
                     </div>
@@ -168,14 +168,14 @@ new class extends Component {
                     </div>
                 </div>
 
-                <p class="theme-meta mt-5 text-base leading-8">{{ __('global.experience_companies.sportdata') }}</p>
+                <p class="theme-meta mt-4 max-w-[75ch] text-[15px] leading-7 sm:mt-5 sm:text-base sm:leading-8">{{ __('global.experience_companies.sportdata') }}</p>
 
                 <div class="theme-card-muted theme-card-interactive cyber-panel-card mobile-soft mt-6 rounded-[1.3rem] p-5">
                     <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                         <p class="theme-kicker text-[13px] tracking-[0.18em]">{{ __('global.domain_gambling') }}</p>
                         <p class="cyber-log hidden text-[11px] sm:block">domain://gambling</p>
                     </div>
-                    <p class="theme-meta mt-3 text-[15px] leading-7">{{ __('global.sportdata') }}</p>
+                    <p class="theme-meta mt-3 max-w-[75ch] text-[15px] leading-7">{{ __('global.sportdata') }}</p>
                 </div>
             </article>
 
@@ -195,14 +195,14 @@ new class extends Component {
                     </div>
                 </div>
 
-                <p class="theme-meta mt-5 text-base leading-8">{{ __('global.experience_companies.webit') }}</p>
+                <p class="theme-meta mt-4 max-w-[75ch] text-[15px] leading-7 sm:mt-5 sm:text-base sm:leading-8">{{ __('global.experience_companies.webit') }}</p>
 
                 <div class="theme-card-muted theme-card-interactive cyber-panel-card mobile-soft mt-6 rounded-[1.3rem] p-5">
                     <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                         <p class="theme-kicker text-[13px] tracking-[0.18em]">{{ __('global.domain_travel') }}</p>
                         <p class="cyber-log hidden text-[11px] sm:block">domain://travel</p>
                     </div>
-                    <p class="theme-meta mt-3 text-[15px] leading-7">{{ __('global.webit') }}</p>
+                    <p class="theme-meta mt-3 max-w-[75ch] text-[15px] leading-7">{{ __('global.webit') }}</p>
                 </div>
             </article>
         </div>

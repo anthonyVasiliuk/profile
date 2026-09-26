@@ -38,7 +38,7 @@
                         {{ __('global.language_switch') }}
                     </a>
 
-                    <div class="hidden items-center gap-3 sm:flex">
+                    <div class="-my-1.5 -mr-3 hidden items-center sm:flex">
                         <livewire:socials.linkedin />
                         <a href="#github" class="theme-social-link" aria-label="Jump to GitHub section">
                             <span class="[&>svg]:h-5 [&>svg]:w-5">

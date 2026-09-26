@@ -50,7 +50,7 @@
                         <p class="cyber-panel-title">{{ $footerUi['channels'] }}</p>
                         <p class="theme-meta mt-2 text-sm">{{ $footerUi['channels_text'] }}</p>
                     </div>
-                    <div class="flex items-start gap-4">
+                    <div class="-ml-3 flex items-start gap-1">
                         <livewire:socials.linkedin />
                         <livewire:socials.github />
                         <livewire:socials.telegram />

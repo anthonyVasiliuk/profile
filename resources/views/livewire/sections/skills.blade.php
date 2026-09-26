@@ -78,7 +78,6 @@ new class extends Component {
         'adjacent' => $isRu ? 'Смежное' : 'Adjacent',
         'adjacent_text' => $isRu ? 'Frontend-задачи, поиск, очереди, инфраструктурные узлы и отладка production-систем.' : 'Frontend work, search, queues, infrastructure touchpoints, and debugging production systems.',
         'core_matrix' => $isRu ? 'Матрица основного стека' : 'Core Stack Matrix',
-        'ready' => $isRu ? 'в работе' : 'ready',
     ];
 @endphp
 
@@ -124,8 +123,7 @@ new class extends Component {
                                         <img class="cyber-skill-image" @isset($skillImageMeta[$skill['image']]['scale']) style="transform: scale({{ $skillImageMeta[$skill['image']]['scale'] }})" @endisset src="{{ Vite::asset('resources/images/skills/'.$skill['image']) }}" alt="{{ $skill['name'] }}" loading="lazy" decoding="async" width="{{ $skillImageMeta[$skill['image']]['width'] }}" height="{{ $skillImageMeta[$skill['image']]['height'] }}">
                                     </div>
                                     <div class="min-w-0">
-                                        <p class="theme-title text-base font-semibold leading-5">{{ $skill['name'] }}</p>
-                                        <p class="theme-meta mt-1 text-xs uppercase tracking-[0.14em]">{{ $skillsUi['ready'] }}</p>
+                                        <p class="theme-title text-sm font-semibold leading-5 sm:text-base">{{ $skill['name'] }}</p>
                                     </div>
                                 </div>
                             </div>

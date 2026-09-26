@@ -86,7 +86,7 @@ new class extends Component {
                         </div>
                     </div>
 
-                    <aside class="cyber-about-aside relative z-10 rounded-[1.5rem] p-6 sm:p-7">
+                    <aside class="cyber-about-aside relative z-10 rounded-[1.5rem] p-5 sm:p-7 lg:self-start">
                         <div class="flex items-center justify-between gap-4">
                             <p class="theme-kicker">{{ __('global.education') }}</p>
                             <p class="cyber-log hidden text-[11px] sm:block">record://brest-state-tech</p>

@@ -1,4 +1,4 @@
-<a href="https://t.me/AntonVasiliuk" target="_blank" rel="noopener noreferrer" class="theme-social-link">
+<a href="https://t.me/AntonVasiliuk" target="_blank" rel="noopener noreferrer" class="theme-social-link" aria-label="Telegram">
 
 <span class="[&>svg]:h-5 [&>svg]:w-5">
     <svg
