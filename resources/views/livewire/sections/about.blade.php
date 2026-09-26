@@ -10,11 +10,7 @@ new class extends Component {
     $isRu = app()->getLocale() === 'ru';
     $aboutUi = [
         'profile_visual' => $isRu ? 'Профиль' : 'Profile Visual',
-        'focus' => $isRu ? 'Фокус' : 'Focus',
-        'focus_text' => $isRu ? 'Backend-системы, API, интеграции' : 'Backend systems, APIs, integrations',
-        'mode' => $isRu ? 'Формат работы' : 'Mode',
-        'mode_text' => $isRu ? 'Продуктовая разработка, интеграции и постепенная замена legacy-узлов' : 'Product delivery, integrations, and gradual legacy replacement',
-        'stack' => $isRu ? 'Стек' : 'Stack',
+        'heading' => $isRu ? 'Беру backend на себя — от доменной модели до продакшена' : 'I own the backend, from domain model to production',
         'primary_value' => $isRu ? 'Основная ценность' : 'Primary Value',
         'primary_value_text' => $isRu ? 'Переписываю критичную backend-логику так, чтобы продакшен продолжал работать, а команда не тонула в хаосе.' : 'I rebuild critical backend flows without stopping production or turning delivery into chaos.',
         'working_style' => $isRu ? 'Стиль работы' : 'Working Style',
@@ -50,7 +46,7 @@ new class extends Component {
                         <div class="mt-6 max-w-3xl sm:mt-8">
                             <p class="cyber-log text-xs sm:text-sm">{{ $aboutUi['control_room'] }}</p>
                             <h2 class="theme-display theme-title mt-4 max-w-2xl text-3xl font-semibold tracking-tight sm:text-[2.9rem]">
-                                {{ __('global.position') }}
+                                {{ $aboutUi['heading'] }}
                             </h2>
                             <p class="theme-lead mt-6 max-w-[60ch]">
                                 {{ __('global.about_description', ['years' => $profileExperienceYears]) }}
@@ -65,23 +61,6 @@ new class extends Component {
                             <div class="cyber-about-note mobile-soft rounded-[1.25rem] p-5">
                                 <p class="cyber-panel-title">{{ $aboutUi['working_style'] }}</p>
                                 <p class="theme-copy mt-3 text-sm leading-7">{{ $aboutUi['working_style_text'] }}</p>
-                            </div>
-                        </div>
-
-                        <div class="mt-auto pt-8">
-                            <div class="grid gap-4 md:grid-cols-3">
-                                <div class="cyber-about-metric rounded-[1.15rem] p-4">
-                                    <p class="cyber-panel-title">{{ $aboutUi['focus'] }}</p>
-                                    <p class="theme-copy mt-3 text-sm leading-7">{{ $aboutUi['focus_text'] }}</p>
-                                </div>
-                                <div class="cyber-about-metric rounded-[1.15rem] p-4">
-                                    <p class="cyber-panel-title">{{ $aboutUi['mode'] }}</p>
-                                    <p class="theme-copy mt-3 text-sm leading-7">{{ $aboutUi['mode_text'] }}</p>
-                                </div>
-                                <div class="cyber-about-metric rounded-[1.15rem] p-4">
-                                    <p class="cyber-panel-title">{{ $aboutUi['stack'] }}</p>
-                                    <p class="theme-copy mt-3 text-sm leading-7">Laravel, SQL, React, TypeScript, Docker</p>
-                                </div>
                             </div>
                         </div>
                     </div>

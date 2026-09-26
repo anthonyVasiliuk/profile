@@ -13,11 +13,8 @@ new class extends Component {
         'kicker' => $isRu ? 'Собственные проекты' : 'Own projects',
         'heading' => $isRu ? 'Независимые продукты, где я отвечаю не только за backend' : 'Independent products where I own more than the backend',
         'intro' => $isRu
-            ? 'Здесь я отвечаю не только за backend, но и за структуру продукта, платёжный сценарий, контент и путь пользователя от первого экрана до целевого действия.'
-            : 'These are projects where I handle not only the backend, but also the product structure, payment flow, content model, and the path from first screen to user action.',
-        'summary_a' => $isRu ? '2 активных продукта' : '2 active products',
-        'summary_b' => $isRu ? 'Оплата, AI-чат, двуязычный контент' : 'Payments, AI chat, bilingual content',
-        'summary_c' => $isRu ? 'Backend, UI flow, запуск' : 'Backend, UI flow, launch work',
+            ? 'Два живых продукта, которые я собрал целиком: структура продукта, платёжный сценарий, модель контента и путь пользователя от первого экрана до целевого действия.'
+            : 'Two live products I built end to end: product structure, payment flow, content model, and the path from first screen to user action.',
         'astry_label' => $isRu ? 'AI-assisted astrology product' : 'AI-assisted astrology product',
         'astry_text' => $isRu
             ? 'AstryHub — продукт с оплатой, AI-чатом, личным кабинетом и двуязычным контентом. Я собрал backend, экранную структуру и логику выдачи так, чтобы сложная тема читалась как нормальный цифровой сервис.'
@@ -47,6 +44,8 @@ new class extends Component {
             'signal_title' => $projectsUi['astry_signal'],
             'signal_text' => $projectsUi['astry_signal_text'],
             'log' => 'product://astryhub',
+            // No screenshot yet: astryhub.com blocks automated captures. Previews render once every product has one.
+            'preview' => null,
             'chips' => ['AI chat', 'Credits', 'FAQ', 'Glossary', 'RU/EN'],
         ],
         [
@@ -57,47 +56,41 @@ new class extends Component {
             'signal_title' => $projectsUi['instiles_signal'],
             'signal_text' => $projectsUi['instiles_signal_text'],
             'log' => 'product://instiles',
-            'chips' => $isRu ? ['Storefront', 'Каталог', 'UX flow', 'Content structure'] : ['Storefront', 'Catalog', 'UX flow', 'Content structure'],
+            'preview' => 'instiles-'.($isRu ? 'ru' : 'en').'.webp',
+            'chips' => $isRu ? ['Редактор-холст', 'Превью профиля', 'Экспорт со стыками', '1×3 – 4×3', 'RU/EN'] : ['Canvas editor', 'Profile preview', 'Seam-aware export', '1×3 – 4×3', 'RU/EN'],
         ],
     ];
+
+    $showPreviews = collect($products)->every(fn ($product) => $product['preview'] !== null);
 @endphp
 
 <section id="projects" class="cyber-section cyber-section-projects relative overflow-hidden bg-[var(--page-bg-alt)] py-16 sm:py-24 lg:py-28">
     <div class="absolute inset-0 -z-10" style="background-image: radial-gradient(circle at 15% 22%, rgba(9, 230, 255, 0.05), transparent 24%), radial-gradient(circle at 82% 18%, rgba(126, 87, 255, 0.07), transparent 28%);"></div>
-    <div class="mx-auto max-w-7xl px-6">
-        <div class="rounded-[1.95rem] border p-8 sm:p-10" style="border-color: rgba(9, 230, 255, 0.14); background: linear-gradient(180deg, rgba(11, 22, 41, 0.62) 0%, rgba(8, 16, 30, 0.68) 100%); box-shadow: 0 18px 58px rgba(2, 6, 23, 0.2);">
-            <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-                <div class="max-w-3xl">
-                    <div class="flex items-center justify-between gap-4">
-                        <p class="theme-kicker">{{ $projectsUi['kicker'] }}</p>
-                        <p class="cyber-log text-[11px]">lab://independent-products</p>
-                    </div>
-                    <h2 class="theme-display theme-title mt-5 text-3xl font-semibold tracking-tight sm:text-[2.95rem]">
-                        {{ $projectsUi['heading'] }}
-                    </h2>
-                    <p class="theme-lead mt-6 max-w-[60ch]">
-                        {{ $projectsUi['intro'] }}
-                    </p>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <div class="cyber-panel-shell mobile-flat rounded-[1.95rem] p-8 sm:p-10">
+            <div class="max-w-3xl">
+                <div class="flex items-center justify-between gap-4">
+                    <p class="theme-kicker">{{ $projectsUi['kicker'] }}</p>
+                    <p class="cyber-log hidden text-[11px] sm:block">lab://independent-products</p>
                 </div>
-
-                <div class="grid w-full gap-4 lg:max-w-2xl lg:grid-cols-3">
-                    <div class="cyber-stat rounded-[1rem] p-4">
-                        <p class="cyber-panel-title">{{ $projectsUi['summary_a'] }}</p>
-                    </div>
-                    <div class="cyber-stat rounded-[1rem] p-4">
-                        <p class="cyber-panel-title">{{ $projectsUi['summary_b'] }}</p>
-                    </div>
-                    <div class="cyber-stat rounded-[1rem] p-4">
-                        <p class="cyber-panel-title">{{ $projectsUi['summary_c'] }}</p>
-                    </div>
-                </div>
+                <h2 class="theme-display theme-title mt-5 text-3xl font-semibold tracking-tight sm:text-[2.95rem]">
+                    {{ $projectsUi['heading'] }}
+                </h2>
+                <p class="theme-lead mt-6 max-w-[60ch]">
+                    {{ $projectsUi['intro'] }}
+                </p>
             </div>
 
             <div class="cyber-divider mt-8"></div>
 
             <div class="mt-8 grid gap-6 xl:grid-cols-2">
                 @foreach ($products as $product)
-                    <article class="theme-card-muted theme-card-interactive rounded-[1.7rem] p-6 sm:p-7">
+                    <article class="theme-card-muted theme-card-interactive min-w-0 rounded-[1.5rem] p-5 sm:rounded-[1.7rem] sm:p-7">
+                        @if ($showPreviews)
+                            <a href="{{ $product['url'] }}" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true" class="cyber-project-preview mb-6 block overflow-hidden rounded-[1.1rem]">
+                                <img src="{{ Vite::asset('resources/images/projects/'.$product['preview']) }}" alt="" loading="lazy" decoding="async" width="960" height="467" class="block h-auto w-full">
+                            </a>
+                        @endif
                         <div class="flex items-start justify-between gap-4">
                             <div class="min-w-0">
                                 <p class="theme-kicker">{{ $product['label'] }}</p>

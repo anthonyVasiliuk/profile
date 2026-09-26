@@ -550,13 +550,6 @@
         box-shadow: inset 0 0 0 1px rgba(9, 230, 255, 0.03);
     }
 
-    .cyber-about-metric {
-        border: 1px solid rgba(9, 230, 255, 0.14);
-        background: linear-gradient(180deg, rgba(7, 19, 35, 0.88) 0%, rgba(6, 14, 28, 0.9) 100%);
-        backdrop-filter: blur(14px);
-        box-shadow: inset 0 0 0 1px rgba(9, 230, 255, 0.03);
-    }
-
     .cyber-about-aside {
         overflow: hidden;
         border: 1px solid rgba(9, 230, 255, 0.16);
@@ -681,10 +674,6 @@
 
     .cyber-footer-grid > * {
         min-width: 0;
-    }
-
-    .cyber-panel-grid {
-        grid-auto-rows: 1fr;
     }
 
     .cyber-panel-card {
@@ -879,10 +868,14 @@
         z-index: 1;
     }
 
-    .cyber-reference-aside {
-        border: 1px solid rgba(9, 230, 255, 0.14);
-        background: linear-gradient(180deg, rgba(11, 22, 41, 0.82) 0%, rgba(8, 16, 30, 0.86) 100%);
-        box-shadow: inset 0 0 0 1px rgba(9, 230, 255, 0.03);
+    .cyber-reference-mark {
+        display: block;
+        height: 2.2rem;
+        font-family: var(--font-display);
+        font-size: 4.5rem;
+        line-height: 1;
+        color: var(--accent);
+        text-shadow: 0 0 24px rgba(9, 230, 255, 0.35);
     }
 
     .cyber-reference-card::after {
@@ -912,31 +905,11 @@
 
     .cyber-reference-details {
         display: flex;
-        flex: 1 1 auto;
         flex-direction: column;
     }
 
     .cyber-reference-details summary::-webkit-details-marker {
         display: none;
-    }
-
-    .cyber-reference-preview {
-        position: relative;
-        display: -webkit-box;
-        overflow: hidden;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 6;
-        min-height: calc(1.82em * 6);
-    }
-
-    .cyber-reference-preview::after {
-        content: "";
-        position: absolute;
-        inset: auto 0 0 0;
-        height: 3.5rem;
-        background: linear-gradient(180deg, rgba(12, 23, 43, 0) 0%, rgba(12, 23, 43, 0.92) 100%);
-        pointer-events: none;
-        transition: opacity 180ms ease;
     }
 
     .cyber-reference-toggle {
@@ -950,10 +923,6 @@
         display: none;
     }
 
-    .cyber-reference-details[open] .cyber-reference-preview {
-        display: none;
-    }
-
     .cyber-reference-details[open] .cyber-reference-toggle-open {
         display: none;
     }
@@ -963,8 +932,8 @@
     }
 
     @media (min-width: 1024px) {
-        .cyber-reference-aside {
-            min-height: 100%;
+        .cyber-panel-grid {
+            grid-auto-rows: 1fr;
         }
     }
 

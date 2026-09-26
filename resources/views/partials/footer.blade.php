@@ -27,12 +27,6 @@
                     <p class="theme-copy max-w-xl text-sm leading-7">
                         {{ __('global.footer_pitch') }}
                     </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="cyber-pill-muted inline-flex items-center rounded-full px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em]">Laravel</span>
-                        <span class="cyber-pill-muted inline-flex items-center rounded-full px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em]">PHP</span>
-                        <span class="cyber-pill-muted inline-flex items-center rounded-full px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em]">APIs</span>
-                        <span class="cyber-pill-muted inline-flex items-center rounded-full px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em]">Delivery</span>
-                    </div>
                     <p class="cyber-log text-xs">{{ $footerUi['build_line'] }}</p>
                 </div>
 

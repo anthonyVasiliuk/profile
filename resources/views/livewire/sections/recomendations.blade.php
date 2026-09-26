@@ -15,6 +15,7 @@ new class extends Component {
             'name' => __('global.person_1_name'),
             'position' => __('global.person_1_position'),
             'date' => '01 / 2025',
+            'highlight' => __('global.testimonial_1_highlight'),
             'text' => __('global.testimonial_1'),
         ],
         [
@@ -22,6 +23,7 @@ new class extends Component {
             'name' => __('global.person_2_name'),
             'position' => __('global.person_2_position'),
             'date' => '02 / 2025',
+            'highlight' => __('global.testimonial_2_highlight'),
             'text' => __('global.testimonial_2'),
         ],
     ];
@@ -33,7 +35,6 @@ new class extends Component {
         'signal_text' => $isRu ? 'Надёжность, техническую ответственность, backend-глубину и спокойную работу на длинной дистанции.' : 'Reliability, technical responsibility, backend depth, and steady long-term delivery.',
         'expand' => $isRu ? 'Читать полностью' : 'Read full reference',
         'collapse' => $isRu ? 'Свернуть' : 'Collapse',
-        'quote_label' => $isRu ? 'Рекомендация' : 'Reference',
     ];
 @endphp
 
@@ -68,55 +69,42 @@ new class extends Component {
 
             <div class="cyber-divider mt-8"></div>
 
-            <div class="mt-8 space-y-6">
-                @foreach ($recommendations as $index => $recommendation)
-                    <article class="theme-card-muted theme-card-interactive cyber-reference-wide-card rounded-[1.7rem] p-6 sm:p-7">
-                        <div class="grid gap-6 lg:grid-cols-[14.5rem_minmax(0,1fr)] lg:items-start">
-                            <div class="cyber-reference-aside rounded-[1.35rem] p-5">
-                                <p class="cyber-panel-title">{{ $recommendationUi['quote_label'] }} {{ $index + 1 }}</p>
-                                <div class="mt-4 flex items-center gap-4">
-                                    <img
-                                        src="{{ Vite::asset('resources/images/recomendations/'.$recommendation['image']) }}"
-                                        class="h-16 w-16 rounded-full object-cover ring-4"
-                                        style="--tw-ring-color: rgba(9, 230, 255, 0.12);"
-                                        alt="{{ $recommendation['name'] }}"
-                                        loading="lazy"
-                                        decoding="async"
-                                        width="100"
-                                        height="100"
-                                    >
-                                    <div class="min-w-0">
-                                        <h3 class="theme-title text-xl font-semibold leading-6">{{ $recommendation['name'] }}</h3>
-                                        <p class="theme-meta mt-2 text-sm leading-6">{{ $recommendation['position'] }}</p>
-                                    </div>
-                                </div>
+            <div class="mt-8 grid gap-6 lg:grid-cols-2 lg:items-start">
+                @foreach ($recommendations as $recommendation)
+                    <article class="theme-card-muted theme-card-interactive cyber-reference-wide-card flex min-w-0 flex-col rounded-[1.5rem] p-5 sm:rounded-[1.7rem] sm:p-8">
+                        <span class="cyber-reference-mark" aria-hidden="true">&ldquo;</span>
+                        <blockquote class="theme-display theme-title text-xl font-semibold leading-snug tracking-tight sm:text-2xl">
+                            {{ $recommendation['highlight'] }}
+                        </blockquote>
 
-                                @if ($recommendation['date'])
-                                    <div class="mt-4">
-                                        <span class="cyber-pill-muted inline-flex rounded-full px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em]">
-                                            {{ $recommendation['date'] }}
-                                        </span>
-                                    </div>
-                                @endif
-                            </div>
-
-                            <div class="flex h-full flex-col lg:pt-1">
-                                <details class="cyber-reference-details flex-1">
-                                    <summary class="list-none">
-                                        <div class="cyber-reference-preview theme-copy cyber-reference-text">
-                                            "{{ $recommendation['text'] }}"
-                                        </div>
-                                        <span class="cyber-reference-toggle mt-5 inline-flex items-center rounded-full px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.18em]">
-                                            <span class="cyber-reference-toggle-open">{{ $recommendationUi['expand'] }}</span>
-                                            <span class="cyber-reference-toggle-close">{{ $recommendationUi['collapse'] }}</span>
-                                        </span>
-                                    </summary>
-                                    <p class="theme-copy cyber-reference-text mt-5">
-                                        "{{ $recommendation['text'] }}"
-                                    </p>
-                                </details>
+                        <div class="mt-auto flex items-center gap-4 pt-7">
+                            <img
+                                src="{{ Vite::asset('resources/images/recomendations/'.$recommendation['image']) }}"
+                                class="h-14 w-14 shrink-0 rounded-full object-cover ring-4"
+                                style="--tw-ring-color: rgba(9, 230, 255, 0.12);"
+                                alt="{{ $recommendation['name'] }}"
+                                loading="lazy"
+                                decoding="async"
+                                width="100"
+                                height="100"
+                            >
+                            <div class="min-w-0">
+                                <h3 class="theme-title text-lg font-semibold leading-6">{{ $recommendation['name'] }}</h3>
+                                <p class="theme-meta mt-1 text-sm leading-6">{{ $recommendation['position'] }} · {{ $recommendation['date'] }}</p>
                             </div>
                         </div>
+
+                        <details class="cyber-reference-details mt-6">
+                            <summary class="list-none">
+                                <span class="cyber-reference-toggle inline-flex self-start items-center rounded-full px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.18em]">
+                                    <span class="cyber-reference-toggle-open">{{ $recommendationUi['expand'] }}</span>
+                                    <span class="cyber-reference-toggle-close">{{ $recommendationUi['collapse'] }}</span>
+                                </span>
+                            </summary>
+                            <p class="theme-copy cyber-reference-text mt-5">
+                                "{{ $recommendation['text'] }}"
+                            </p>
+                        </details>
                     </article>
                 @endforeach
             </div>

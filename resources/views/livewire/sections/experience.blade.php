@@ -9,7 +9,6 @@ new class extends Component {
 @php
     $isRu = app()->getLocale() === 'ru';
     $experienceUi = [
-        'teams_online' => $isRu ? '> teams_online = 4' : '> teams_online = 4',
         'domains' => $isRu ? '> domains = proxies, gambling, travel, ecommerce, research, social' : '> domains = proxies, gambling, travel, ecommerce, research, social',
         'northit_track' => $isRu ? 'мультипроектный delivery' : 'multi-project delivery',
         'sportdata_track' => $isRu ? 'беттинг + казино' : 'betting + casino',
@@ -19,9 +18,7 @@ new class extends Component {
 
     $currentProduct = [
         'company' => $isRu ? 'Текущий продукт (NDA)' : 'Current Product (NDA)',
-        'role' => $isRu
-            ? 'Senior Backend Developer (2025 - настоящее время)'
-            : 'Senior Backend Developer (2025 - Present)',
+        'role' => $isRu ? 'Senior Backend-разработчик' : 'Senior Backend Developer',
         'summary' => $isRu
             ? 'Продуктовая backend-роль с фокусом на поддержку legacy-платформы и перенос ключевой логики на новый движок без остановки рабочего продукта.'
             : 'Product backend role focused on keeping a legacy commercial platform stable while migrating its core logic to a new engine without disrupting the live product.',
@@ -61,8 +58,7 @@ new class extends Component {
                 </h2>
             </div>
             <div class="cyber-terminal max-w-xl rounded-[1rem] p-4">
-                <p class="cyber-log text-xs sm:text-sm">{{ $experienceUi['teams_online'] }}</p>
-                <p class="cyber-log mt-2 text-xs sm:text-sm">{{ $experienceUi['domains'] }}</p>
+                <p class="cyber-log text-xs sm:text-sm">{{ $experienceUi['domains'] }}</p>
             </div>
         </div>
 
@@ -109,7 +105,7 @@ new class extends Component {
                             <span>{{ __('global.company_northitgroup') }}</span>
                             <livewire:socials.link-icon />
                         </a>
-                        <p class="theme-copy mt-2 text-lg font-medium">{{ __('global.role_northitgroup') }}</p>
+                        <p class="theme-copy mt-2 text-base font-medium sm:text-lg">{{ Str::beforeLast(__('global.role_northitgroup'), ' (') }}</p>
                     </div>
                     <div class="flex flex-wrap items-center gap-3">
                         <span class="cyber-pill-muted inline-flex items-center rounded-[0.8rem] px-3 py-2 text-xs font-medium uppercase tracking-[0.16em]">
@@ -155,8 +151,8 @@ new class extends Component {
             <article class="cyber-dossier cyber-timeline-card relative rounded-[1.5rem] p-5 sm:rounded-[1.9rem] sm:p-10">
                 <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                     <div>
-                        <h3 class="theme-display theme-title text-2xl font-semibold">{{ __('global.company_sportdata') }}</h3>
-                        <p class="theme-copy mt-2 text-lg font-medium">{{ __('global.role_sportdata') }}</p>
+                        <h3 class="theme-display theme-title text-xl font-semibold sm:text-2xl">{{ __('global.company_sportdata') }}</h3>
+                        <p class="theme-copy mt-2 text-base font-medium sm:text-lg">{{ Str::beforeLast(__('global.role_sportdata'), ' (') }}</p>
                     </div>
                     <div class="flex flex-wrap items-center gap-3">
                         <span class="cyber-pill-muted inline-flex items-center rounded-[0.8rem] px-3 py-2 text-xs font-medium uppercase tracking-[0.16em]">
@@ -182,8 +178,8 @@ new class extends Component {
             <article class="cyber-dossier cyber-timeline-card relative rounded-[1.5rem] p-5 sm:rounded-[1.9rem] sm:p-10">
                 <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                     <div>
-                        <h3 class="theme-display theme-title text-2xl font-semibold">{{ __('global.company_webit') }}</h3>
-                        <p class="theme-copy mt-2 text-lg font-medium">{{ __('global.role_webit') }}</p>
+                        <h3 class="theme-display theme-title text-xl font-semibold sm:text-2xl">{{ __('global.company_webit') }}</h3>
+                        <p class="theme-copy mt-2 text-base font-medium sm:text-lg">{{ Str::beforeLast(__('global.role_webit'), ' (') }}</p>
                     </div>
                     <div class="flex flex-wrap items-center gap-3">
                         <span class="cyber-pill-muted inline-flex items-center rounded-[0.8rem] px-3 py-2 text-xs font-medium uppercase tracking-[0.16em]">
