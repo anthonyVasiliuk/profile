@@ -193,6 +193,13 @@ PowerShell helpers for Windows:
 ./scripts/local-down.ps1
 ```
 
+Bash helpers for Linux/macOS/Git Bash:
+
+```bash
+bash scripts/local-up.sh
+bash scripts/local-down.sh
+```
+
 ### VPS helpers
 
 Run on the server from the project root:
