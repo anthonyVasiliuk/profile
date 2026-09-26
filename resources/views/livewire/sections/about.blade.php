@@ -65,7 +65,7 @@ new class extends Component {
                         </div>
                     </div>
 
-                    <aside class="cyber-about-aside relative z-10 rounded-[1.5rem] p-5 sm:p-7 lg:self-start">
+                    <aside class="cyber-about-aside relative z-10 flex flex-col rounded-[1.5rem] p-5 sm:p-7">
                         <div class="flex items-center justify-between gap-4">
                             <p class="theme-kicker">{{ __('global.education') }}</p>
                             <p class="cyber-log hidden text-[11px] sm:block">record://brest-state-tech</p>
@@ -81,24 +81,26 @@ new class extends Component {
                             </p>
                         </div>
 
-                        <div class="cyber-divider mt-6"></div>
+                        <div class="mt-auto pt-6">
+                            <div class="cyber-divider"></div>
 
-                        <div class="mt-2 sm:mt-6 sm:space-y-3">
-                            <div class="cyber-about-meta-row">
-                                <span class="cyber-log text-[11px]">{{ $aboutUi['period_label'] }}</span>
-                                <span class="theme-copy text-sm font-medium">2010-2015</span>
-                            </div>
-                            <div class="cyber-about-meta-row">
-                                <span class="cyber-log text-[11px]">{{ $aboutUi['degree_label'] }}</span>
-                                <span class="theme-copy text-sm font-medium">{{ $aboutUi['education_degree'] }}</span>
-                            </div>
-                            <div class="cyber-about-meta-row">
-                                <span class="cyber-log text-[11px]">{{ $aboutUi['education_specialty'] }}</span>
-                                <span class="theme-copy text-sm font-medium">{{ $aboutUi['systems_engineering'] }}</span>
-                            </div>
-                            <div class="cyber-about-meta-row">
-                                <span class="cyber-log text-[11px]">{{ $aboutUi['faculty_label'] }}</span>
-                                <span class="theme-copy text-sm font-medium">{{ $aboutUi['education_faculty'] }}</span>
+                            <div class="mt-2 sm:mt-6 sm:space-y-3">
+                                <div class="cyber-about-meta-row">
+                                    <span class="cyber-log text-[11px]">{{ $aboutUi['period_label'] }}</span>
+                                    <span class="theme-copy text-sm font-medium">2010-2015</span>
+                                </div>
+                                <div class="cyber-about-meta-row">
+                                    <span class="cyber-log text-[11px]">{{ $aboutUi['degree_label'] }}</span>
+                                    <span class="theme-copy text-sm font-medium">{{ $aboutUi['education_degree'] }}</span>
+                                </div>
+                                <div class="cyber-about-meta-row">
+                                    <span class="cyber-log text-[11px]">{{ $aboutUi['education_specialty'] }}</span>
+                                    <span class="theme-copy text-sm font-medium">{{ $aboutUi['systems_engineering'] }}</span>
+                                </div>
+                                <div class="cyber-about-meta-row">
+                                    <span class="cyber-log text-[11px]">{{ $aboutUi['faculty_label'] }}</span>
+                                    <span class="theme-copy text-sm font-medium">{{ $aboutUi['education_faculty'] }}</span>
+                                </div>
                             </div>
                         </div>
                     </aside>
