@@ -151,6 +151,22 @@ new class extends Component {
                                         </svg>
                                     </a>
                                 </p>
+                                <p>
+                                    <a href="https://talkfirst.chat/" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between gap-3 transition-colors hover:text-[var(--accent-secondary)]">
+                                        <span>/talkfirst</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="shrink-0 opacity-70 transition group-hover:opacity-100" width="10" height="10" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 16L16 8M10 8h6v6" />
+                                        </svg>
+                                    </a>
+                                </p>
+                                <p>
+                                    <a href="https://s1doit.com/" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between gap-3 transition-colors hover:text-[var(--accent-secondary)]">
+                                        <span>/s1doit</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="shrink-0 opacity-70 transition group-hover:opacity-100" width="10" height="10" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 16L16 8M10 8h6v6" />
+                                        </svg>
+                                    </a>
+                                </p>
                                 <p>/trade-it</p>
                                 <p>/warehouseplus-api</p>
                                 <p>
