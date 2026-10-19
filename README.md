@@ -43,7 +43,7 @@ The site runs on its own domain, `anthonyv.online`.
 
 `.env.docker.prod` is not tracked in git, so the server keeps its own copy. Changing the domain means editing that file on the server too, not only here.
 
-The active production mode is **behind the existing Instagrid Caddy container** — see that section below. The two sections before it describe standalone alternatives.
+The active production mode is **behind the independent shared edge-proxy** on the `shared_edge` network. The standalone and legacy Instagrid modes below are alternatives.
 
 ### VPS / production run
 
@@ -129,7 +129,29 @@ anthonyv.online {
 }
 ```
 
-### VPS / production behind the existing Instagrid Caddy container
+### VPS / production behind the shared edge-proxy
+
+Use `bash scripts/deploy-prod.sh`. The deploy, logs and down helpers default to
+`compose.prod.shared-edge.yaml`; the app publishes no host ports and joins the
+external `shared_edge` network as `profile-app`. Only the `edge-proxy` project
+owns public ports 80/443 and certificates. Its Caddyfile forwards
+`anthonyv.online` to `profile-app:8080`.
+
+Start the shared proxy first, keep the existing profile project name so its
+`app_storage` volume is reused, then deploy:
+
+```bash
+bash scripts/deploy-prod.sh
+```
+
+The deploy helper validates Compose and waits for `/up` to pass. Set
+`PROFILE_DEPLOY_WAIT_TIMEOUT` to change the default 300-second timeout.
+`EDGE_NETWORK` may be overridden through the shell or Compose `.env`; keep it
+consistent with edge-proxy. `.env.docker.prod` remains the application's env file.
+The previous `compose.prod.instagrid-edge.yaml` defaults to `instiles_default`
+and should only be selected explicitly for a legacy deployment.
+
+### VPS / production behind the existing Instagrid Caddy container (legacy)
 
 Use this mode when `instiles.online` is already served by the `instagrid` Docker stack on ports `80/443`.
 
@@ -211,7 +233,7 @@ bash scripts/logs-prod.sh
 bash scripts/down-prod.sh
 ```
 
-`deploy-prod.sh` rebuilds, restarts, removes orphaned containers, and prints final status. All three scripts default to `compose.prod.instagrid-edge.yaml`, the active production mode; pass another compose file to use a standalone stack.
+`deploy-prod.sh` validates Compose, rebuilds, restarts, waits for health and prints final status. All three scripts default to `compose.prod.shared-edge.yaml`, the active production mode; pass another compose file to use a standalone or legacy stack.
 It also accepts a compose file override, for example:
 
 ```bash
